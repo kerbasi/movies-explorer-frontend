@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  background: url(../../images/pic__COLOR_landing-logo.svg) no-repeat;
+  background: url(../../images/landing-logo.svg) no-repeat;
   background-position: center top 82px;
 }
 
