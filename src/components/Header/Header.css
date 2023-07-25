@@ -2,6 +2,7 @@
   width: 100%;
   font-family: var(--font-primary);
   font-size: 12px;
+  background-color: var(--color-blue);
 }
 
 .header__wrapper {
