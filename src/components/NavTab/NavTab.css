@@ -15,7 +15,9 @@
 
 .nav-tab__link {
   font-family: var(--font-primary);
+  font-size: 13px;
   font-weight: 500;
+  line-height: 16px;
   color: var(--color-primary);
   margin: 0 40px;
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function NavTab() {
   return (
-    <section className='nav-tab'>
+    <nav className='nav-tab'>
       <div className='nav-tab__wrapper'>
         <Link className='nav-tab__link' to='/'>
           О проекте
@@ -15,7 +15,7 @@ function NavTab() {
           Студент
         </Link>
       </div>
-    </section>
+    </nav>
   );
 }
 
