@@ -1,0 +1,21 @@
+.nav-tab {
+  width: 100%;
+  background-color: var(--color-grey-light-1);
+  min-height: 66px;
+}
+
+.nav-tab__wrapper {
+  max-width: 1280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  min-height: 66px;
+}
+
+.nav-tab__link {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  color: var(--color-primary);
+  margin: 0 40px;
+}

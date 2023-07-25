@@ -18,6 +18,7 @@
   text-decoration: none;
   color: var(--color-white);
   margin-left: auto;
+  font-weight: 500;
 }
 
 .header__link_type_login {
