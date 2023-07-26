@@ -11,6 +11,7 @@
   justify-content: center;
   margin: 0 auto;
   min-height: 66px;
+  gap: 40px;
 }
 
 .nav-tab__link {
@@ -19,5 +20,5 @@
   font-weight: 500;
   line-height: 16px;
   color: var(--color-primary);
-  margin: 0 40px;
+  margin: 0;
 }

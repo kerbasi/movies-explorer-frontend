@@ -7,11 +7,10 @@
 
 .header__wrapper {
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: 1140px;
   min-height: 74px;
   display: flex;
   align-items: center;
-  padding: 18px 70px;
 }
 
 .header__link {
