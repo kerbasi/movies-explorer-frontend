@@ -1,5 +1,5 @@
 .movies-card {
-  border-radius: 20px;
+  border-radius: 10px;
   overflow: hidden;
   display: block;
   width: 270px;
@@ -18,20 +18,23 @@
 .movies-card__line-wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 14px 12px 0;
+  align-items: flex-start;
+  margin: 8px 12px 0;
 }
 
 .movies-card__title {
   font-size: 13px;
   font-weight: 500;
   margin: 0;
+  padding-top: 4px;
+  align-self: center;
 }
 
 .movies-card__save-button {
   border: none;
   background-color: transparent;
   margin: 0;
+  margin-right: 6px;
   padding: 0;
   width: 16px;
   height: 16px;

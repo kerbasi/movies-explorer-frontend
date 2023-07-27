@@ -15,8 +15,8 @@
 
 .filter-checkbox__span {
   display: block;
-  width: 36px;
-  height: 20px;
+  width: 32px;
+  height: 16px;
   border: 2px solid var(--color-green);
   border-radius: 12px;
   background-color: var(--color-green);
@@ -26,8 +26,8 @@
 .filter-checkbox__span:before {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   box-sizing: border-box;
   top: 2px;
   left: 2px;

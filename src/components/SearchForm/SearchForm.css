@@ -11,7 +11,7 @@
 
 .search-from__text-input-wrapper {
   position: relative;
-  padding-top: 60px;
+  padding-top: 57px;
 }
 
 .search-form__text-input {
@@ -38,8 +38,8 @@
   border: none;
   background: transparent;
   position: absolute;
-  right: 0;
-  top: 67px;
+  right: 6px;
+  top: 66px;
   cursor: pointer;
 }
 
