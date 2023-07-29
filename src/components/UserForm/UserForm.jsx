@@ -17,7 +17,9 @@ function UserForm({ title, name, onSubmit, buttonText, isValid, ...props }) {
       >
         {props.children}
         <button
-          className='user-form__button'
+          className={`user-form__button ${
+            !isValid ? "user-form__button_disabled" : ""
+          }`}
           type='submit'
           from={name}
           disabled={isValid ? false : true}

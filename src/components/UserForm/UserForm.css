@@ -40,6 +40,11 @@
   line-height: normal;
 }
 
+.user-form__button_disabled {
+  background-color: var(--color-grey-light-8);
+  color: var(--color-grey-dark-1);
+}
+
 .user-form__label {
   display: block;
   font-size: 10px;
