@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 
 function Navigation({ logined }) {
   const location = useLocation().pathname;
-  console.log(logined);
   return (
     <nav className='navigation'>
       {(location === "/movies" ||

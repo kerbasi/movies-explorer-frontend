@@ -10,10 +10,22 @@
   margin: 0;
 }
 
+@media screen and (max-width: 550px) {
+  .portfolio__title {
+    font-size: 14px;
+  }
+}
+
 .portfolio__list {
   list-style: none;
   padding: 0;
   margin-top: 32px;
+}
+
+@media screen and (max-width: 550px) {
+  .portfolio__list {
+    margin-top: 25px;
+  }
 }
 
 .portfolio__list-item {
@@ -42,6 +54,14 @@
   .portfolio__link {
     font-size: 28px;
     letter-spacing: -1.12px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .portfolio__link {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    line-height: 64px;
   }
 }
 

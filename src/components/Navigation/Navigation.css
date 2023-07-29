@@ -39,6 +39,12 @@
   line-height: 16px;
 }
 
+@media screen and (max-width: 768px) {
+  .navigation__link_type_signup {
+    font-size: 10px;
+  }
+}
+
 .navigation__link_type_login {
   color: var(--color-primary);
   margin-left: 30px;
@@ -50,6 +56,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation__link_type_login {
+    font-size: 10px;
+    width: 54px;
+    height: 26px;
+    margin-left: 14px;
+  }
 }
 
 .navigation__link_type_profile {

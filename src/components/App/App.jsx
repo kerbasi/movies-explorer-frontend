@@ -11,7 +11,6 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
-import { useEffect } from "react";
 
 function App() {
   const [logined, setLogined] = useState(false);

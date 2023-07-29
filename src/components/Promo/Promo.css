@@ -20,6 +20,14 @@
   }
 }
 
+@media screen and (max-width: 550px) {
+  .promo__wrapper {
+    min-height: 570px;
+    background-position: center top 142px;
+    background-size: 248px;
+  }
+}
+
 .promo__title {
   font-family: var(--font-primary);
   color: var(--color-white);
@@ -34,8 +42,18 @@
 
 @media screen and (max-width: 768px) {
   .promo__title {
-    width: 730px;
+    max-width: calc(90% * (730 / 768));
     text-align: center;
     margin: 326px auto 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .promo__title {
+    font-size: 31px;
+    line-height: 39px;
+    letter-spacing: -1.24px;
+    margin-top: 207px;
+    width: 300px;
   }
 }
