@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 
-function Header() {
+function Header({ logined, setLogined }) {
   const location = useLocation().pathname;
   const className = `header ${
     location !== "/" ? "header header_type_white" : ""
@@ -12,7 +12,7 @@ function Header() {
     <header className={className}>
       <div className='header__wrapper'>
         <Logo />
-        <Navigation logined />
+        <Navigation logined={logined} setLogined={setLogined} />
       </div>
     </header>
   );

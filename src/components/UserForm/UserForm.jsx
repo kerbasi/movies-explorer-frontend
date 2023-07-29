@@ -12,6 +12,7 @@ function UserForm({
   onUnlock,
   unlocked,
   errorMessage,
+  onLogout,
   ...props
 }) {
   return (
@@ -84,7 +85,10 @@ function UserForm({
           <button className='user-form__profile-button' onClick={onUnlock}>
             Редактировать
           </button>
-          <button className='user-form__profile-button user-form__profile-button_type_red'>
+          <button
+            className='user-form__profile-button user-form__profile-button_type_red'
+            onClick={onLogout}
+          >
             Выйти из аккаунта
           </button>
         </div>

@@ -11,9 +11,11 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
+import { useEffect } from "react";
 
 function App() {
-  const [logined, setLogined] = useState(false);
+  const [logined, setLogined] = useState(true);
+
   return (
     <div className='app'>
       <Routes>
@@ -21,7 +23,7 @@ function App() {
           path='/'
           element={
             <>
-              <Header logined />
+              <Header logined={logined} setLogined={setLogined} />
               <Main />
               <Footer />
             </>
@@ -31,7 +33,7 @@ function App() {
           path='/movies'
           element={
             <>
-              <Header logined />
+              <Header logined={logined} />
               <Movies showPreloader={false} /> <Footer />
             </>
           }
@@ -40,7 +42,7 @@ function App() {
           path='/saved-movies'
           element={
             <>
-              <Header logined />
+              <Header logined={logined} />
               <SavedMovies showPreloader={false} />
               <Footer />
             </>
@@ -52,8 +54,8 @@ function App() {
           path='/profile'
           element={
             <>
-              <Header logined />
-              <Profile user='Виталий' />
+              <Header logined={logined} />
+              <Profile user='Виталий' setLogined={setLogined} />
             </>
           }
         />

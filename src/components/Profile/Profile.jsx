@@ -2,18 +2,24 @@ import "./Profile.css";
 import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Profile({ user }) {
+function Profile({ user, setLogined }) {
   const [unlocked, setUnlocked] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const { values, handleChange, errors, isValid, setValues } =
     useFormAndValidation();
+  const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
     setErrorMessage("500 На сервере произошла ошибка");
   };
   const onUnlock = () => {
     setUnlocked(true);
+  };
+  const onLogout = () => {
+    navigate("/");
+    setLogined(false);
   };
   useEffect(() => {
     setValues({
@@ -32,6 +38,7 @@ function Profile({ user }) {
         isValid={isValid}
         unlocked={unlocked}
         errorMessage={errorMessage}
+        onLogout={onLogout}
       >
         <label
           className='user-form__label user-form__label_type_profile'

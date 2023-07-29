@@ -11,7 +11,7 @@ function MoviesCardList({ movies }) {
   };
   useEffect(() => {
     setSlicedMovies(movies.slice(0, pagesLimit));
-  }, [pagesLimit]);
+  }, [pagesLimit, movies]);
   return (
     <section className='movies-card-list'>
       {slicedMovies.map((movie) => {
