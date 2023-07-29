@@ -1,13 +1,15 @@
 import "./Login.css";
 import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Login() {
+  const [errorMessage, setErrorMessage] = useState("");
   const { values, handleChange, errors, isValid, setValues } =
     useFormAndValidation();
   const onSubmit = (e) => {
     e.preventDefault();
+    setErrorMessage("500 На сервере произошла ошибка");
   };
   useEffect(() => {
     setValues({
@@ -23,6 +25,7 @@ function Login() {
         onSubmit={onSubmit}
         buttonText='Войти'
         isValid={isValid}
+        errorMessage={errorMessage}
       >
         <label className='user-form__label' htmlFor='email'>
           E-mail

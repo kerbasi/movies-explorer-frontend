@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 
 function Profile({ user }) {
   const [unlocked, setUnlocked] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const { values, handleChange, errors, isValid, setValues } =
     useFormAndValidation();
   const onSubmit = (e) => {
     e.preventDefault();
+    setErrorMessage("500 На сервере произошла ошибка");
   };
   const onUnlock = () => {
     setUnlocked(true);
@@ -29,6 +31,7 @@ function Profile({ user }) {
         buttonText='Сохранить'
         isValid={isValid}
         unlocked={unlocked}
+        errorMessage={errorMessage}
       >
         <label
           className='user-form__label user-form__label_type_profile'

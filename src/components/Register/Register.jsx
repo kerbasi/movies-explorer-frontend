@@ -1,13 +1,15 @@
 import "./Register.css";
 import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Register() {
+  const [errorMessage, setErrorMessage] = useState("");
   const { values, handleChange, errors, isValid, setValues } =
     useFormAndValidation();
   const onSubmit = (e) => {
     e.preventDefault();
+    setErrorMessage("500 На сервере произошла ошибка");
   };
   useEffect(() => {
     setValues({
@@ -24,6 +26,7 @@ function Register() {
         onSubmit={onSubmit}
         buttonText='Зарегистрироваться'
         isValid={isValid}
+        errorMessage={errorMessage}
       >
         <label className='user-form__label' htmlFor='name'>
           Имя

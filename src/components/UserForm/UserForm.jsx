@@ -11,11 +11,9 @@ function UserForm({
   isValid,
   onUnlock,
   unlocked,
+  errorMessage,
   ...props
 }) {
-  const [errorMessage, setErrorMessage] = useState(
-    "500 На сервере произошла ошибка."
-  );
   return (
     <section
       className={`user-form ${
