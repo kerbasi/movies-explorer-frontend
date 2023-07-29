@@ -1,0 +1,81 @@
+.navigation {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.navigation__links-wrapper {
+  display: flex;
+  margin-left: 426px;
+  gap: 16px;
+  color: var(--color-black);
+}
+
+.navigation__links-wrapper_type_main {
+  gap: 20px;
+  margin-left: auto;
+  color: var(--color-white);
+}
+
+.navigation__link {
+  text-decoration: none;
+  color: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.navigation__link_active {
+  font-weight: 500;
+}
+
+.navigation__link_type_signup {
+  text-decoration: none;
+  color: var(--color-white);
+  margin-left: auto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.navigation__link_type_login {
+  color: var(--color-primary);
+  margin-left: 30px;
+  display: block;
+  width: 76px;
+  height: 32px;
+  background: var(--color-green);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation__link_type_profile {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  display: block;
+  width: 100px;
+  height: 32px;
+  background: var(--color-grey-light-5);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.navigation__link_type_profile-main {
+  width: 109px;
+  margin-left: 41px;
+  color: var(--color-white);
+  border: 2px solid var(--color-white);
+  background-color: transparent;
+}
+
+.navigation__account-logo {
+  margin-right: 8px;
+}
