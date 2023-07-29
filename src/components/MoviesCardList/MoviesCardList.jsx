@@ -4,16 +4,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function MoviesCardList({ movies }) {
-  const [pages, setPages] = useState(0);
-  const [slicedMovies, setSlicedMovies] = useState(
-    movies.slice(pages, pages + 16)
-  );
+  const [pagesLimit, setPagesLimit] = useState(16);
+  const [slicedMovies, setSlicedMovies] = useState(movies.slice(0, pagesLimit));
   const paginationHandler = () => {
-    setPages((prev) => prev + 16);
+    setPagesLimit((prev) => prev + 16);
   };
   useEffect(() => {
-    setSlicedMovies(movies.slice(pages, pages + 16));
-  }, [pages]);
+    setSlicedMovies(movies.slice(0, pagesLimit));
+  }, [pagesLimit]);
   return (
     <section className='movies-card-list'>
       {slicedMovies.map((movie) => {
@@ -22,7 +20,7 @@ function MoviesCardList({ movies }) {
       <div className='movies-card-list__more_button-wrapper'>
         <button
           className={`movies-card-list__more-button ${
-            movies.length - pages < 16
+            movies.length < pagesLimit
               ? "movies-card-list__more-button movies-card-list__more-button_hidden"
               : ""
           }`}
