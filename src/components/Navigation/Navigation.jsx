@@ -1,15 +1,15 @@
 import "./Navigation.css";
 import accountLogo from "../../images/account.svg";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
 
-function Navigation() {
-  const [logined, setLogined] = useState(false);
+function Navigation({ logined }) {
   const location = useLocation().pathname;
 
   return (
     <nav className='navigation'>
-      {(location === "/movies" || location === "/saved-movies") && (
+      {(location === "/movies" ||
+        location === "/saved-movies" ||
+        location === "/profile") && (
         <div className='navigation__links-wrapper'>
           <Link
             className={`navigation__link ${

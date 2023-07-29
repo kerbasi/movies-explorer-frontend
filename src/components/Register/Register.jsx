@@ -1,7 +1,6 @@
 import "./Register.css";
 import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
-import { useDeferredValue } from "react";
 import { useEffect } from "react";
 
 function Register() {

@@ -5,11 +5,20 @@
   font-family: var(--font-primary);
 }
 
+.user-form_type_profile {
+  max-width: 410px;
+  margin-top: 74px;
+}
+
 .user-form__title {
   font-size: 24px;
   margin: 38px 0;
   font-weight: 500;
   line-height: normal;
+}
+
+.user-form__title_type_profile {
+  text-align: center;
 }
 
 .user-form__text {
@@ -27,8 +36,20 @@
   margin-left: 3px;
 }
 
+.user-form__button-wrapper {
+  margin-top: 56px;
+  text-align: center;
+}
+
+.user-form__button-wrapper_type_login {
+  margin-top: 145px;
+}
+
+.user-form__button-wrapper_type_profile {
+  margin-top: 176px;
+}
+
 .user-form__button {
-  margin-top: 82px;
   width: 396px;
   height: 45px;
   border-radius: 3px;
@@ -38,10 +59,6 @@
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
-}
-
-.user-form__button_type_login {
-  margin-top: 170px;
 }
 
 .user-form__button_disabled {
@@ -58,6 +75,26 @@
   margin-top: 10px;
 }
 
+.user-form__label_type_profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-grey-light-3);
+  margin-top: 108px;
+  font-size: 11px;
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+
+.user-form__label_type_profile {
+  color: var(--color-primary);
+}
+
+.user-form__label_type_profile:last-of-type {
+  border-bottom: none;
+  margin-top: 0;
+}
+
 .user-form__input {
   width: 100%;
   height: 46px;
@@ -69,14 +106,34 @@
   box-sizing: border-box;
   border-radius: 8px;
   font-size: 13px;
-
   font-weight: 400;
   line-height: normal;
+}
+
+.user-form__input_type_profile {
+  display: inline-block;
+  width: 70%;
+  background-color: transparent;
+  margin-left: auto;
+  text-align: right;
+  margin-top: 5px;
+  padding: 0;
+  font-size: 11px;
+  color: var(--color-blue);
+  height: 34px;
+}
+
+.user-form__input_type_profile:disabled {
+  color: var(--color-primary);
 }
 
 .user-form__input:focus {
   background-color: var(--color-grey-light-7);
   outline: none;
+}
+
+.user-form__input_type_profile:focus {
+  background-color: transparent;
 }
 
 .user-form__input-error {
@@ -91,4 +148,37 @@
   line-height: normal;
   min-height: 10px;
   margin: 0;
+}
+
+.user-form__error_type_profile {
+  margin-left: auto;
+  min-width: 70%;
+  text-align: right;
+}
+
+.user-form__profile-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-form__profile-button {
+  margin-top: 198px;
+  border: none;
+  background-color: transparent;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.user-form__profile-button_type_red {
+  margin-top: 16px;
+  color: var(--color-red-2);
+}
+
+.user-form__error-message {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--color-red-2);
+  min-height: 14px;
 }

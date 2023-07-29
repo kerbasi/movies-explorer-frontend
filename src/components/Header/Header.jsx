@@ -12,7 +12,7 @@ function Header() {
     <header className={className}>
       <div className='header__wrapper'>
         <Logo />
-        <Navigation />
+        <Navigation logined />
       </div>
     </header>
   );

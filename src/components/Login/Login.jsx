@@ -33,7 +33,7 @@ function Login() {
             type='email'
             name='email'
             id='email'
-            form='register'
+            form='login'
             required
             onChange={handleChange}
             value={values.email || ""}
@@ -49,7 +49,7 @@ function Login() {
             type='password'
             name='password'
             id='password'
-            form='register'
+            form='login'
             required
             minLength='8'
             maxLength='30'

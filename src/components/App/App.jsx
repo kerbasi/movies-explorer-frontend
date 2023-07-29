@@ -1,5 +1,7 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
+
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -7,9 +9,11 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Footer from "../Footer/Footer";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
+import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
 
 function App() {
+  const [logined, setLogined] = useState(false);
   return (
     <div className='app'>
       <Routes>
@@ -17,7 +21,7 @@ function App() {
           path='/'
           element={
             <>
-              <Header />
+              <Header logined />
               <Main />
               <Footer />
             </>
@@ -27,7 +31,7 @@ function App() {
           path='/movies'
           element={
             <>
-              <Header />
+              <Header logined />
               <Movies showPreloader={false} /> <Footer />
             </>
           }
@@ -36,7 +40,7 @@ function App() {
           path='/saved-movies'
           element={
             <>
-              <Header />
+              <Header logined />
               <SavedMovies showPreloader={false} />
               <Footer />
             </>
@@ -44,7 +48,16 @@ function App() {
         />
         <Route path='/signup' element={<Register />} />
         <Route path='/signin' element={<Login />} />
-        <Route path='/*' element={<NotFound />} />
+        <Route
+          path='/profile'
+          element={
+            <>
+              <Header logined />
+              <Profile user='Виталий' />
+            </>
+          }
+        />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
   );

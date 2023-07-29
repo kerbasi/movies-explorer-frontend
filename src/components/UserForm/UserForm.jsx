@@ -1,12 +1,35 @@
 import "./UserForm.css";
 import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-function UserForm({ title, name, onSubmit, buttonText, isValid, ...props }) {
+function UserForm({
+  title,
+  name,
+  onSubmit,
+  buttonText,
+  isValid,
+  onUnlock,
+  unlocked,
+  ...props
+}) {
+  const [errorMessage, setErrorMessage] = useState(
+    "500 На сервере произошла ошибка."
+  );
   return (
-    <section className='user-form'>
-      <Logo />
-      <h1 className='user-form__title'>{title}</h1>
+    <section
+      className={`user-form ${
+        name === "profile" ? "user-form_type_profile" : ""
+      }`}
+    >
+      {name !== "profile" && <Logo />}
+      <h1
+        className={`user-form__title ${
+          name === "profile" ? "user-form__title_type_profile" : ""
+        }`}
+      >
+        {title}
+      </h1>
       <form
         className={`user-form__form user-form__form_type_${name}`}
         action='#'
@@ -16,27 +39,58 @@ function UserForm({ title, name, onSubmit, buttonText, isValid, ...props }) {
         onSubmit={onSubmit}
       >
         {props.children}
-        <button
-          className={`user-form__button ${
-            !isValid ? "user-form__button_disabled" : ""
-          } ${name === "login" ? "user-form__button_type_login" : ""}`}
-          type='submit'
-          from={name}
-          disabled={isValid ? false : true}
-        >
-          {buttonText}
-        </button>
+        {(name !== "profile" || unlocked) && (
+          <div
+            className={`user-form__button-wrapper ${
+              name === "login" ? "user-form__button-wrapper_type_login" : ""
+            } ${
+              name === "profile" ? "user-form__button-wrapper_type_profile" : ""
+            }`}
+          >
+            <p
+              className={`user-form__error-message ${
+                name === "profile"
+                  ? "user-form__error-message_type_profile"
+                  : ""
+              }`}
+            >
+              {errorMessage}
+            </p>
+            <button
+              className={`user-form__button ${
+                !isValid ? "user-form__button_disabled" : ""
+              }`}
+              type='submit'
+              from={name}
+              disabled={isValid ? false : true}
+            >
+              {buttonText}
+            </button>
+          </div>
+        )}
       </form>
-      <p className='user-form__text'>
-        {`${
-          name === "register"
-            ? "Уже зарегистрированы"
-            : "Ещё не зарегистрированы"
-        }? `}
-        <Link className='user-form__link'>{`${
-          name === "register" ? "Войти" : "Регистрация"
-        }?`}</Link>
-      </p>
+      {(name === "register" || name === "login") && (
+        <p className='user-form__text'>
+          {`${
+            name === "register"
+              ? "Уже зарегистрированы"
+              : "Ещё не зарегистрированы"
+          }? `}
+          <Link className='user-form__link'>{`${
+            name === "register" ? "Войти" : "Регистрация"
+          }?`}</Link>
+        </p>
+      )}
+      {name === "profile" && !unlocked && (
+        <div className='user-form__profile-button-wrapper'>
+          <button className='user-form__profile-button' onClick={onUnlock}>
+            Редактировать
+          </button>
+          <button className='user-form__profile-button user-form__profile-button_type_red'>
+            Выйти из аккаунта
+          </button>
+        </div>
+      )}
     </section>
   );
 }
