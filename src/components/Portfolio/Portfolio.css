@@ -38,6 +38,13 @@
   margin: 0;
 }
 
+@media screen and (max-width: 768px) {
+  .portfolio__link {
+    font-size: 28px;
+    letter-spacing: -1.12px;
+  }
+}
+
 .portfolio__text {
   display: inline-block;
   margin: 0;

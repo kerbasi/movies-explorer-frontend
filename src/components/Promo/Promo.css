@@ -13,6 +13,13 @@
   background-position: center top 82px;
 }
 
+@media screen and (max-width: 768px) {
+  .promo__wrapper {
+    min-height: 784px;
+    background-position: center top 224px;
+  }
+}
+
 .promo__title {
   font-family: var(--font-primary);
   color: var(--color-white);
@@ -22,5 +29,13 @@
   letter-spacing: -2px;
   width: 730px;
   text-align: center;
-  margin: 184px;
+  margin: 184px auto 0;
+}
+
+@media screen and (max-width: 768px) {
+  .promo__title {
+    width: 730px;
+    text-align: center;
+    margin: 326px auto 0;
+  }
 }

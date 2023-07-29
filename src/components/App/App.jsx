@@ -14,7 +14,7 @@ import NotFound from "../NotFound/NotFound";
 import { useEffect } from "react";
 
 function App() {
-  const [logined, setLogined] = useState(true);
+  const [logined, setLogined] = useState(false);
 
   return (
     <div className='app'>

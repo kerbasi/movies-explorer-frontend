@@ -24,3 +24,8 @@
   --color-red-1: #ff6838;
   --color-red-2: #ee3465;
 }
+
+body {
+  --tablet-large: 900px;
+  --tablet: 768px;
+}

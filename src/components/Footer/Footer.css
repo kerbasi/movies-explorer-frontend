@@ -4,10 +4,16 @@
 }
 
 .footer__wrapper {
-  max-width: 1140px;
+  max-width: calc(1140 / 1280 * 100%);
   min-height: 172px;
   margin: 0 auto;
   font-family: var(--font-primary);
+}
+
+@media screen and (max-width: 768px) {
+  .footer__wrapper {
+    max-width: calc(708 / 768 * 100%);
+  }
 }
 
 .footer__title {

@@ -15,4 +15,11 @@
   min-height: 74px;
   display: flex;
   align-items: center;
+  padding: 0 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .header__wrapper {
+    padding: 0 30px;
+  }
 }
