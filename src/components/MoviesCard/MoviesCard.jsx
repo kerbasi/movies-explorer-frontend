@@ -4,7 +4,7 @@ import saved from "../../images/saved.svg";
 
 function MoviesCard({ movie }) {
   return (
-    <il className='movies-card'>
+    <li className='movies-card'>
       <img className='movies-card__image' src={movie.img} alt='movie' />
       <div className='movies-card__line-wrapper'>
         <h3 className='movies-card__title'>{movie.title}</h3>
@@ -17,7 +17,7 @@ function MoviesCard({ movie }) {
         </button>
       </div>
       <p className='movies-card__duration'>{movie.duration}</p>
-    </il>
+    </li>
   );
 }
 

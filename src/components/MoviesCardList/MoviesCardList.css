@@ -9,6 +9,11 @@
   padding-top: 70px;
 }
 
+.movies-card-list__more_button-wrapper {
+  width: 100%;
+  min-height: 139px;
+}
+
 .movies-card-list__more-button {
   width: 100%;
   border: none;
@@ -19,4 +24,8 @@
   font-size: 12px;
   font-weight: 500;
   margin: 49px 0 79px 0;
+}
+
+.movies-card-list__more-button_hidden {
+  display: none;
 }

@@ -11,7 +11,7 @@ function Footer() {
           <p className='footer__text'>© 2023</p>
           <nav className='footer__nav'>
             <ul className='footer__list'>
-              <il className='footer__item'>
+              <li className='footer__item'>
                 <a
                   className='footer__link'
                   href='https://practicum.yandex.ru/'
@@ -20,8 +20,8 @@ function Footer() {
                 >
                   Яндекс.Практикум
                 </a>
-              </il>
-              <il className='footer__item'>
+              </li>
+              <li className='footer__item'>
                 <a
                   className='footer__link'
                   href='https://github.com/'
@@ -30,8 +30,8 @@ function Footer() {
                 >
                   Github
                 </a>
-              </il>
-              <il className='footer__item'></il>
+              </li>
+              <li className='footer__item'></li>
             </ul>
           </nav>
         </div>
