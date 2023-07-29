@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 function Navigation() {
-  const [logined, setLogined] = useState(true);
+  const [logined, setLogined] = useState(false);
   const location = useLocation().pathname;
 
   return (

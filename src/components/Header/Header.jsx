@@ -5,7 +5,9 @@ import Navigation from "../Navigation/Navigation";
 
 function Header() {
   const location = useLocation().pathname;
-  const className = location === "/" ? "header" : "header header_type_white";
+  const className = `header ${
+    location !== "/" ? "header header_type_white" : ""
+  } `;
   return (
     <header className={className}>
       <div className='header__wrapper'>

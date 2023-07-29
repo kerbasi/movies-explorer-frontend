@@ -5,20 +5,43 @@ import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Footer from "../Footer/Footer";
+import NotFound from "../NotFound/NotFound";
 
 function App() {
   return (
     <div className='app'>
-      <Header />
       <Routes>
-        <Route path='/' element={<Main />} />
-        <Route path='/movies' element={<Movies showPreloader={false} />} />
+        <Route
+          path='/'
+          element={
+            <>
+              <Header />
+              <Main />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path='/movies'
+          element={
+            <>
+              <Header />
+              <Movies showPreloader={false} /> <Footer />
+            </>
+          }
+        />
         <Route
           path='/saved-movies'
-          element={<SavedMovies showPreloader={false} />}
+          element={
+            <>
+              <Header />
+              <SavedMovies showPreloader={false} />
+              <Footer />
+            </>
+          }
         />
+        <Route path='/*' element={<NotFound />} />
       </Routes>
-      <Footer />
     </div>
   );
 }
