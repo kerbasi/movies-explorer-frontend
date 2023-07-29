@@ -6,6 +6,7 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Footer from "../Footer/Footer";
 import Register from "../Register/Register";
+import Login from "../Login/Login";
 import NotFound from "../NotFound/NotFound";
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
           }
         />
         <Route path='/signup' element={<Register />} />
+        <Route path='/signin' element={<Login />} />
         <Route path='/*' element={<NotFound />} />
       </Routes>
     </div>

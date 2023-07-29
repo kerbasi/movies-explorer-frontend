@@ -40,6 +40,10 @@
   line-height: normal;
 }
 
+.user-form__button_type_login {
+  margin-top: 170px;
+}
+
 .user-form__button_disabled {
   background-color: var(--color-grey-light-8);
   color: var(--color-grey-dark-1);
@@ -51,7 +55,7 @@
   font-weight: 400;
   line-height: normal;
   color: var(--color-secondary);
-  margin-top: 9px;
+  margin-top: 10px;
 }
 
 .user-form__input {
