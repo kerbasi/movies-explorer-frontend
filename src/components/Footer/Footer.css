@@ -84,6 +84,7 @@
     flex-direction: column;
     padding: 0;
     text-align: center;
+    gap: 10px;
   }
 }
 

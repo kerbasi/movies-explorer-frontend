@@ -53,7 +53,8 @@
     font-size: 31px;
     line-height: 39px;
     letter-spacing: -1.24px;
+    margin: 0;
     margin-top: 207px;
-    width: 300px;
+    min-width: 300px;
   }
 }

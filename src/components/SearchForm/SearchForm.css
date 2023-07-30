@@ -74,3 +74,9 @@
   display: flex;
   justify-content: center;
 }
+
+@media screen and (max-width: 550px) {
+  .search-form__filter-checkbox {
+    margin: 44px 0 49px;
+  }
+}

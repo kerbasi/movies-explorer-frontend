@@ -25,7 +25,7 @@ function MoviesCardList({ movies }) {
     setSlicedMovies(movies.slice(0, pagesLimit));
   }, [pagesLimit, movies]);
   useEffect(() => {
-    if (addPages === 0) {
+    if (pagesLimit === 0) {
       setPagesLimit(addPages);
     }
   }, [addPages]);

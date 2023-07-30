@@ -164,6 +164,7 @@
 
 @media screen and (max-width: 550px) {
   .about-me__photo {
+    max-width: 100%;
     width: 292px;
     height: 352px;
     order: -1;
