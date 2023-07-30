@@ -92,6 +92,12 @@
   margin-top: 145px;
 }
 
+@media screen and (max-width: 550px) {
+  .user-form__button-wrapper_type_login {
+    margin-top: 232px;
+  }
+}
+
 .user-form__button-wrapper_type_profile {
   margin-top: 176px;
 }
