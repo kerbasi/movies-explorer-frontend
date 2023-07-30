@@ -25,7 +25,6 @@
   --color-red-2: #ee3465;
 }
 
-body {
-  --tablet-large: 900px;
-  --tablet: 768px;
+html {
+  scroll-behavior: smooth;
 }
