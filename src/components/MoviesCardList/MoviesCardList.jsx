@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function MoviesCardList({ movies }) {
-  const [pagesLimit, setPagesLimit] = useState(16);
+  const [pagesLimit, setPagesLimit] = useState(8);
   const [slicedMovies, setSlicedMovies] = useState(movies.slice(0, pagesLimit));
   const paginationHandler = () => {
     setPagesLimit((prev) => prev + 16);
