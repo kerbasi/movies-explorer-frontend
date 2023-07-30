@@ -2,6 +2,7 @@ import "./AboutMe.css";
 import student from "../../images/student.png";
 import Title from "../Title/Title";
 import Portfolio from "../Portfolio/Portfolio";
+import { Link } from "react-router-dom";
 
 function AboutMe() {
   return (
@@ -20,14 +21,14 @@ function AboutMe() {
               После того, как прошёл курс по веб&#8209;разработке, начал
               заниматься фриланс-заказами и&nbsp;ушёл с&nbsp;постоянной работы.
             </p>
-            <a
+            <Link
               className='about-me__link'
-              href='https://github.com'
+              to='https://github.com/kerbasi'
               target='_blank'
               rel='noreferrer'
             >
               Github
-            </a>
+            </Link>
           </div>
           <img className='about-me__photo' src={student} alt='student' />
         </div>

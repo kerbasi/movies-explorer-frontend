@@ -48,7 +48,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
-  color: var(--color-red);
+  color: var(--color-red-1);
 }
 
 @media screen and (max-width: 550px) {
