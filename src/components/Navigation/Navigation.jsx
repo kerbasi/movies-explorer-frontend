@@ -11,7 +11,7 @@ function Navigation({ logined }) {
         location === "/profile") && (
         <div className='navigation__links-wrapper'>
           <NavLink
-            className={({ isActive, isPending }) =>
+            className={({ isActive }) =>
               isActive
                 ? "navigation__link navigation__link_active"
                 : "navigation__link"
@@ -21,7 +21,7 @@ function Navigation({ logined }) {
             Фильмы
           </NavLink>
           <NavLink
-            className={({ isActive, isPending }) =>
+            className={({ isActive }) =>
               isActive
                 ? "navigation__link navigation__link_active"
                 : "navigation__link"

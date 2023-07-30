@@ -5,9 +5,21 @@
   font-family: var(--font-primary);
 }
 
+@media screen and (max-width: 900px) {
+  .user-form {
+    margin-top: 231px;
+  }
+}
+
 .user-form_type_profile {
   max-width: 410px;
   margin-top: 74px;
+}
+
+@media screen and (max-width: 900px) {
+  .user-form_type_profile {
+    margin-top: 236px;
+  }
 }
 
 .user-form__title {
@@ -80,10 +92,16 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--color-grey-light-3);
-  margin-top: 108px;
+  margin-top: 105px;
   font-size: 11px;
   font-weight: 500;
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: 900px) {
+  .user-form__label_type_profile {
+    margin-top: 80px;
+  }
 }
 
 .user-form__label_type_profile {
@@ -160,9 +178,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.user-form__profile-button {
   margin-top: 198px;
+}
+
+@media screen and (max-width: 900px) {
+  .user-form__profile-button-wrapper {
+    margin-top: 186px;
+  }
+}
+
+.user-form__profile-button {
   border: none;
   background-color: transparent;
   font-size: 13px;
