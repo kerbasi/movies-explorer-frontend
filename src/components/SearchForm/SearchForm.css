@@ -19,6 +19,7 @@
 
 .search-form__form {
   border-bottom: 1px solid var(--color-grey-light-3);
+  min-height: 237px;
 }
 
 .search-from__text-input-wrapper {

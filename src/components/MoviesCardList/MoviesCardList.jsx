@@ -2,16 +2,33 @@ import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { useState } from "react";
 import { useEffect } from "react";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 function MoviesCardList({ movies }) {
-  const [pagesLimit, setPagesLimit] = useState(16);
-  const [slicedMovies, setSlicedMovies] = useState(movies.slice(0, pagesLimit));
+  const { width } = useWindowDimensions();
+  const [addPages, setAddPages] = useState(0);
+  const [pagesLimit, setPagesLimit] = useState(0);
+  const [slicedMovies, setSlicedMovies] = useState([]);
   const paginationHandler = () => {
-    setPagesLimit((prev) => prev + 16);
+    setPagesLimit((prev) => prev + addPages);
   };
+  useEffect(() => {
+    if (width > 954) {
+      setAddPages(16);
+    } else if (width > 786) {
+      setAddPages(8);
+    } else {
+      setAddPages(5);
+    }
+  }, [width]);
   useEffect(() => {
     setSlicedMovies(movies.slice(0, pagesLimit));
   }, [pagesLimit, movies]);
+  useEffect(() => {
+    if (addPages === 0) {
+      setPagesLimit(addPages);
+    }
+  }, [addPages]);
   return (
     <section className='movies-card-list'>
       <ul className='movies-card-list__wrapper'>
