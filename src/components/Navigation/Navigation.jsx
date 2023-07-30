@@ -1,6 +1,6 @@
 import "./Navigation.css";
 import accountLogo from "../../images/account.svg";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 function Navigation({ logined }) {
   const location = useLocation().pathname;
@@ -10,22 +10,26 @@ function Navigation({ logined }) {
         location === "/saved-movies" ||
         location === "/profile") && (
         <div className='navigation__links-wrapper'>
-          <Link
-            className={`navigation__link ${
-              location === "/movies" ? "navigation__link_active" : ""
-            }`}
+          <NavLink
+            className={({ isActive, isPending }) =>
+              isActive
+                ? "navigation__link navigation__link_active"
+                : "navigation__link"
+            }
             to='/movies'
           >
             Фильмы
-          </Link>
-          <Link
-            className={`navigation__link ${
-              location === "/saved-movies" ? "navigation__link_active" : ""
-            }`}
+          </NavLink>
+          <NavLink
+            className={({ isActive, isPending }) =>
+              isActive
+                ? "navigation__link navigation__link_active"
+                : "navigation__link"
+            }
             to='/saved-movies'
           >
             Сохранённые фильмы
-          </Link>
+          </NavLink>
         </div>
       )}
       {location === "/" && logined && (
