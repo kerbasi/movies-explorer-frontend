@@ -1,8 +1,11 @@
 import "./MoviesCard.css";
 import save from "../../images/save.svg";
 import saved from "../../images/saved.svg";
+import cross from "../../images/delete.svg";
+import { useLocation } from "react-router-dom";
 
 function MoviesCard({ movie }) {
+  const location = useLocation().pathname;
   return (
     <li className='movies-card'>
       <img className='movies-card__image' src={movie.img} alt='movie' />
@@ -11,7 +14,7 @@ function MoviesCard({ movie }) {
         <button className='movies-card__save-button'>
           <img
             className='movies-card__save-button-image'
-            src={movie.saved ? saved : save}
+            src={movie.saved ? (location === "/movies" ? saved : cross) : save}
             alt='save button'
           />
         </button>
