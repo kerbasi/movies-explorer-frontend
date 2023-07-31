@@ -1,0 +1,119 @@
+.burger {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--color-primary-with-trans);
+  visibility: hidden;
+  display: flex;
+  justify-content: end;
+}
+
+.burger_visible {
+  visibility: visible;
+  position: fixed;
+}
+
+.burger__button {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  visibility: visible;
+  border: none;
+  background-color: transparent;
+  z-index: 100;
+}
+
+.burger__button-icon {
+  width: 44px;
+  height: 44px;
+  object-fit: none;
+  object-position: center;
+}
+
+.burger__container {
+  width: calc(100% * (520 / 768));
+  height: 100%;
+  background-color: var(--color-white);
+  transform: translateX(calc(100% + 100% * (520 / 768)));
+  transition: all 0.3s;
+  z-index: 50;
+}
+
+.burger__container_active {
+  transform: translateX(0);
+  transition: all 0.3s;
+}
+
+/* .burger__checkbox {
+  display: none;
+}
+
+.burger__button {
+  display: block;
+  height: 44px;
+  width: 44px;
+  position: absolute;
+  top: 15px;
+  right: 30px;
+}
+
+.burger__icon {
+  position: relative;
+  margin-top: 20px;
+}
+
+.burger__icon:after,
+.burger__icon:before {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.burger__icon,
+.burger__icon:after,
+.burger__icon:before {
+  width: 34px;
+  height: 4px;
+  box-sizing: border-box;
+  display: block;
+  background-color: var(--color-primary);
+  transition: all 0.3s;
+  z-index: 2000;
+}
+
+.burger__icon:after {
+  top: 10px;
+}
+
+.burger__icon:before {
+  top: -10px;
+}
+
+.burger__checkbox:checked ~ .burger__icon {
+  background-color: transparent;
+}
+
+.burger__checkbox:checked ~ .burger__icon:after {
+  top: 0;
+  transform: rotate(135deg);
+}
+
+.burger__checkbox:checked ~ .burger__icon:before {
+  top: 0;
+  transform: rotate(-135deg);
+}
+
+.burger__background {
+  width: 10px;
+  height: 10px;
+  background-color: violet;
+  transform: translateX(70px);
+  transition: transform 0.8s cubic-bezier(0.96, -0.05, 0.76, 0.49);
+  z-index: 1000;
+}
+
+.burger__checkbox:checked ~ .burger__background {
+  transform: translateX();
+} */

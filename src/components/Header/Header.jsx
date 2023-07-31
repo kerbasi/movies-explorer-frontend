@@ -2,6 +2,7 @@ import "./Header.css";
 import { useLocation } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
+import Burger from "../Burger/Burger";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 function Header({ logined, setLogined }) {
@@ -16,7 +17,9 @@ function Header({ logined, setLogined }) {
         <Logo />
         {width > 900 ? (
           <Navigation logined={logined} setLogined={setLogined} />
-        ) : null}
+        ) : (
+          <Burger />
+        )}
       </div>
     </header>
   );

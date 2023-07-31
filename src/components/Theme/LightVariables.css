@@ -1,8 +1,15 @@
 ﻿:root {
   --font-primary: "Inter", "Arial", sans-serif;
+  --transparency: 50%;
 
   --color-primary: #000000;
   --color-secondary: #a0a0a0;
+
+  --color-primary-with-trans: color-mix(
+    in srgb,
+    var(--color-primary) var(--transparency, 100%),
+    transparent
+  );
 
   --color-white: #ffffff;
 
