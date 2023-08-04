@@ -2,7 +2,7 @@ import "./Navigation.css";
 import accountLogo from "../../images/account.svg";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-function Navigation({ logined }) {
+function Navigation({ logined, burgerActive }) {
   const location = useLocation().pathname;
   return (
     <nav className='navigation'>
@@ -62,22 +62,6 @@ function Navigation({ logined }) {
               ""
             )}
             Аккаунт
-          </Link>
-        </>
-      )}
-      {!logined && (
-        <>
-          <Link
-            className='navigation__link navigation__link_type_signup'
-            to='/signup'
-          >
-            Регистрация
-          </Link>
-          <Link
-            className='navigation__link navigation__link_type_login'
-            to='/signin'
-          >
-            Войти
           </Link>
         </>
       )}

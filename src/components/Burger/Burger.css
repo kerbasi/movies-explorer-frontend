@@ -7,7 +7,7 @@
   background-color: var(--color-primary-with-trans);
   visibility: hidden;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .burger_visible {

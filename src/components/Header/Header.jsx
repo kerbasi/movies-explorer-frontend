@@ -1,5 +1,5 @@
 import "./Header.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 import Burger from "../Burger/Burger";
@@ -15,11 +15,26 @@ function Header({ logined, setLogined }) {
     <header className={className}>
       <div className='header__wrapper'>
         <Logo />
-        {width > 900 ? (
-          <Navigation logined={logined} setLogined={setLogined} />
-        ) : (
-          <Burger />
+        {!logined && (
+          <>
+            <Link
+              className='navigation__link navigation__link_type_signup'
+              to='/signup'
+            >
+              Регистрация
+            </Link>
+            <Link
+              className='navigation__link navigation__link_type_login'
+              to='/signin'
+            >
+              Войти
+            </Link>
+          </>
         )}
+        {width > 900 && logined && (
+          <Navigation logined={logined} setLogined={setLogined} />
+        )}
+        {width <= 900 && logined && <Burger />}
       </div>
     </header>
   );
