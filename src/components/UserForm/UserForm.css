@@ -35,7 +35,8 @@
 @media screen and (max-width: 550px) {
   .user-form_type_profile {
     max-width: 260px;
-    margin-top: 70px;
+    margin-top: 23px;
+    align-items: stretch;
   }
 }
 
@@ -90,7 +91,7 @@
 
 @media screen and (max-width: 550px) {
   .user-form__button-wrapper {
-    margin-top: 144px;
+    margin-top: 132px;
   }
 }
 
@@ -106,7 +107,7 @@
 
 @media screen and (max-width: 550px) {
   .user-form__button-wrapper_type_login {
-    margin-top: 232px;
+    margin-top: 221px;
   }
 }
 
@@ -155,7 +156,13 @@
 
 @media screen and (max-width: 550px) {
   .user-form__form {
-    margin-top: 32px;
+    margin-top: 41px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .user-form__form_type_profile {
+    margin-top: 0px;
   }
 }
 
@@ -179,9 +186,9 @@
 
 @media screen and (max-width: 550px) {
   .user-form__label_type_profile {
-    padding-top: 2px;
+    padding-top: 6px;
     box-sizing: border-box;
-    margin-top: 66px;
+    margin-top: 26px;
   }
 }
 

@@ -26,8 +26,21 @@
   z-index: 1000;
 }
 
+@media screen and (max-width: 550px) {
+  .burger__button {
+    right: 9px;
+  }
+}
+
 .burger__button_type_cross {
   right: 10px;
+}
+
+@media screen and (max-width: 550px) {
+  .burger__button_type_cross {
+    right: 5px;
+    top: 5px;
+  }
 }
 
 .burger__button-icon {
@@ -35,6 +48,15 @@
   height: 44px;
   object-fit: none;
   object-position: center;
+}
+
+@media screen and (max-width: 550px) {
+  .burger__button-icon {
+    width: 37px;
+    height: 45px;
+    overflow: hidden;
+    object-fit: fill;
+  }
 }
 
 .burger__container {

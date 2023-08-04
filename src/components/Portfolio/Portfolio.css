@@ -24,7 +24,7 @@
 
 @media screen and (max-width: 550px) {
   .portfolio__list {
-    margin-top: 25px;
+    margin-top: 20px;
   }
 }
 
@@ -35,6 +35,12 @@
   width: 100%;
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 550px) {
+  .portfolio__list-item {
+    height: 67px;
+  }
 }
 
 .portfolio__list-item:last-of-type {
@@ -77,4 +83,11 @@
 .portfolio__text_downed {
   padding-top: 12px;
   align-self: flex-end;
+}
+
+@media screen and (max-width: 550px) {
+  .portfolio__text_downed {
+    padding-top: 2px;
+    align-self: flex-end;
+  }
 }

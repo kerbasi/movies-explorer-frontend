@@ -34,5 +34,7 @@
 @media screen and (max-width: 550px) {
   .nav-tab__link {
     font-size: 11px;
+    text-decoration: underline;
+    border-bottom: none;
   }
 }
