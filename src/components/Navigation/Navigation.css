@@ -2,11 +2,11 @@
   display: flex;
   width: 100%;
   align-items: center;
-  min-height: 100vh;
 }
 
 .navigation_type_burger {
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .navigation__links-wrapper {
