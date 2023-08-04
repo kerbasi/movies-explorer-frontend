@@ -11,11 +11,9 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 function App() {
   const [logined, setLogined] = useState(true);
-  const { width } = useWindowDimensions();
 
   return (
     <div className='app'>
@@ -24,7 +22,7 @@ function App() {
           path='/'
           element={
             <>
-              <Header logined={logined} setLogined={setLogined} width={width} />
+              <Header logined={logined} setLogined={setLogined} />
               <Main />
               <Footer />
             </>
@@ -34,8 +32,8 @@ function App() {
           path='/movies'
           element={
             <>
-              <Header logined={logined} width={width} />
-              <Movies showPreloader={false} width={width} /> <Footer />
+              <Header logined={logined} />
+              <Movies showPreloader={false} /> <Footer />
             </>
           }
         />
@@ -43,8 +41,8 @@ function App() {
           path='/saved-movies'
           element={
             <>
-              <Header logined={logined} width={width} />
-              <SavedMovies showPreloader={false} width={width} />
+              <Header logined={logined} />
+              <SavedMovies showPreloader={false} />
               <Footer />
             </>
           }
@@ -55,7 +53,7 @@ function App() {
           path='/profile'
           element={
             <>
-              <Header logined={logined} width={width} />
+              <Header logined={logined} />
               <Profile user='Виталий' setLogined={setLogined} />
             </>
           }

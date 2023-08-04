@@ -4,7 +4,7 @@ import Preloader from "../Preloader/Preloader";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import { useEffect, useState } from "react";
 
-function Movies({ width }) {
+function Movies() {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     import("../../utils/constants").then((data) => {
@@ -14,11 +14,7 @@ function Movies({ width }) {
   return (
     <div className='movies'>
       <SearchForm />
-      {movies.length === 0 ? (
-        <Preloader />
-      ) : (
-        <MoviesCardList movies={movies} width={width} />
-      )}
+      {movies.length === 0 ? <Preloader /> : <MoviesCardList movies={movies} />}
     </div>
   );
 }

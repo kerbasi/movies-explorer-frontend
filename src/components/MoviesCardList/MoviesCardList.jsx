@@ -2,30 +2,32 @@ import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
-function MoviesCardList({ movies, width }) {
+function MoviesCardList({ movies }) {
   const [addPages, setAddPages] = useState(0);
   const [pagesLimit, setPagesLimit] = useState(0);
   const [slicedMovies, setSlicedMovies] = useState([]);
   const paginationHandler = () => {
     setPagesLimit((prev) => prev + addPages);
   };
+  const isWidthLarge = useMediaQuery("950px");
+  const isWidthMedium = useMediaQuery("768px");
   useEffect(() => {
-    if (width > 950) {
+    console.log(isWidthLarge, isWidthMedium);
+    if (isWidthLarge) {
       setAddPages(16);
-    } else if (width > 768) {
+    } else if (isWidthMedium) {
       setAddPages(8);
     } else {
       setAddPages(5);
     }
-  }, [width]);
+  }, [isWidthLarge, isWidthMedium]);
   useEffect(() => {
     setSlicedMovies(movies.slice(0, pagesLimit));
   }, [pagesLimit, movies]);
   useEffect(() => {
-    if (pagesLimit === 0) {
-      setPagesLimit(addPages);
-    }
+    setPagesLimit(addPages);
   }, [pagesLimit, addPages]);
   return (
     <section className='movies-card-list'>
