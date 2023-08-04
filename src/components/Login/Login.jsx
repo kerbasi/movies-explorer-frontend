@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login({ setLogined }) {
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage] = useState("");
   const { values, handleChange, errors, isValid, setValues } =
     useFormAndValidation();
   const onSubmit = (e) => {
