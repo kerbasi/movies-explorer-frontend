@@ -13,7 +13,7 @@ import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
 
 function App() {
-  const [logined, setLogined] = useState(true);
+  const [logined, setLogined] = useState(false);
 
   return (
     <div className='app'>
@@ -48,7 +48,7 @@ function App() {
           }
         />
         <Route path='/signup' element={<Register />} />
-        <Route path='/signin' element={<Login />} />
+        <Route path='/signin' element={<Login setLogined={setLogined} />} />
         <Route
           path='/profile'
           element={

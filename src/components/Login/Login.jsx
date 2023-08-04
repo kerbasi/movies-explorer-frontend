@@ -2,14 +2,17 @@ import "./Login.css";
 import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({ setLogined }) {
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const { values, handleChange, errors, isValid, setValues } =
     useFormAndValidation();
   const onSubmit = (e) => {
     e.preventDefault();
-    setErrorMessage("500 На сервере произошла ошибка");
+    navigate("/");
+    setLogined(true);
   };
   useEffect(() => {
     setValues({
