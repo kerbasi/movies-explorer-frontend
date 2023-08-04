@@ -1,16 +1,17 @@
 import "./Navigation.css";
 import accountLogo from "../../images/account.svg";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import Logo from "../Logo/Logo";
 
 function Navigation({ logined, burgerActive }) {
   const location = useLocation().pathname;
   const navigationClassName = `navigation ${
     burgerActive ? "navigation_type_burger" : ""
   }`;
-  const navigationLinkClassName = `navigation__link hover-link ${
+  const navigationLinkClassName = `navigation__link hover hover_type_link ${
     burgerActive ? "navigation__link_type_burger" : ""
   }`;
-  const navigationActiveLinkClassName = `navigation__link hover-link ${
+  const navigationActiveLinkClassName = `navigation__link hover hover_type_link ${
     burgerActive
       ? "navigation__link_type_burger navigation__link_burger-active"
       : "navigation__link_active"
@@ -22,7 +23,7 @@ function Navigation({ logined, burgerActive }) {
       ? "navigation__links-wrapper_type_main"
       : ""
   }`;
-  const navigationProfileLinkClassName = `navigation__link hover-button ${
+  const navigationProfileLinkClassName = `navigation__link hover hover_type_button ${
     burgerActive
       ? "navigation__link_type_profile navigation__link_type_profile-burger"
       : location === "/"
@@ -31,6 +32,7 @@ function Navigation({ logined, burgerActive }) {
   }`;
   return (
     <nav className={navigationClassName}>
+      {!burgerActive && <Logo />}
       {logined && (
         <>
           <div className={navigationWrapperClassName}>

@@ -1,6 +1,5 @@
 import "./Header.css";
 import { useLocation } from "react-router-dom";
-import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 import Burger from "../Burger/Burger";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
@@ -14,7 +13,6 @@ function Header({ logined, setLogined }) {
   return (
     <header className={className}>
       <div className='header__wrapper'>
-        <Logo />
         {!logined || isWidthLarge ? (
           <Navigation logined={logined} setLogined={setLogined} />
         ) : (

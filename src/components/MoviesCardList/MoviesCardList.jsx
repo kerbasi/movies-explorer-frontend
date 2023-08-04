@@ -38,7 +38,7 @@ function MoviesCardList({ movies }) {
       </ul>
       <div className='movies-card-list__more_button-wrapper'>
         <button
-          className={`movies-card-list__more-button hover-button ${
+          className={`movies-card-list__more-button hover hover_type_button ${
             movies.length < pagesLimit
               ? "movies-card-list__more-button movies-card-list__more-button_hidden"
               : ""

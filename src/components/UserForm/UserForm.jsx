@@ -55,7 +55,7 @@ function UserForm({
               {errorMessage}
             </p>
             <button
-              className={`user-form__button hover-button${
+              className={`user-form__button hover hover_type_button${
                 !isValid ? "user-form__button_disabled" : ""
               }`}
               type='submit'
@@ -74,7 +74,7 @@ function UserForm({
               ? "Уже зарегистрированы"
               : "Ещё не зарегистрированы"
           }? `}
-          <Link className='user-form__link hover-link'>{`${
+          <Link className='user-form__link hover hover_type_link'>{`${
             name === "register" ? "Войти" : "Регистрация"
           }?`}</Link>
         </p>
@@ -82,13 +82,13 @@ function UserForm({
       {name === "profile" && !unlocked && (
         <div className='user-form__profile-button-wrapper'>
           <button
-            className='user-form__profile-button hover-link'
+            className='user-form__profile-button hover hover_type_link'
             onClick={onUnlock}
           >
             Редактировать
           </button>
           <button
-            className='user-form__profile-button user-form__profile-button_type_red hover-link'
+            className='user-form__profile-button user-form__profile-button_type_red hover hover_type_link'
             onClick={onLogout}
           >
             Выйти из аккаунта

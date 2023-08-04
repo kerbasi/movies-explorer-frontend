@@ -14,7 +14,7 @@ function Footer() {
             <ul className='footer__list'>
               <li className='footer__item'>
                 <Link
-                  className='footer__link hover-link'
+                  className='footer__link hover hover_type_link'
                   to='https://practicum.yandex.ru/'
                   target='_blank'
                   rel='noreferrer'
@@ -24,7 +24,7 @@ function Footer() {
               </li>
               <li className='footer__item'>
                 <Link
-                  className='footer__link hover-link'
+                  className='footer__link hover hover_type_link'
                   to='https://github.com/kerbasi'
                   target='_blank'
                   rel='noreferrer'

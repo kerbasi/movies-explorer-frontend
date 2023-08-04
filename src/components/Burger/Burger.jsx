@@ -3,6 +3,7 @@ import burgerIcon from "../../images/burger.svg";
 import burgerWiteIcon from "../../images/burger-white.svg";
 import burgerCrossIcon from "../../images/burger-cross.svg";
 import Navigation from "../Navigation/Navigation";
+import Logo from "../Logo/Logo";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -17,6 +18,9 @@ function Burger() {
   };
   return (
     <div className={`burger ${burgerActive ? "burger_visible" : ""}`}>
+      <div className='burger__logo'>
+        <Logo />
+      </div>
       <button
         className={`burger__button ${
           burgerActive ? "burger__button_type_cross" : ""
