@@ -12,7 +12,7 @@ function MoviesCard({ movie }) {
       <div className='movies-card__line-wrapper'>
         <h3 className='movies-card__title'>{movie.title}</h3>
         <button
-          className={`movies-card__button ${
+          className={`movies-card__button hover-button ${
             location === "/saved-movies" ? "movies-card__button_type_cross" : ""
           }`}
         >

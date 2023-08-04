@@ -12,7 +12,10 @@ function SearchForm() {
             type='text'
             placeholder='Фильм'
           />
-          <button className='search-form__submit-button' type='submit'>
+          <button
+            className='search-form__submit-button hover-button'
+            type='submit'
+          >
             <img className='search-form__find-img' src={find} alt='find' />
           </button>
         </div>

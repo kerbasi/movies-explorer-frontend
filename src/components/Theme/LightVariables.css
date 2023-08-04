@@ -35,3 +35,15 @@
 html {
   scroll-behavior: smooth;
 }
+
+.hover {
+  cursor: pointer;
+}
+
+.hover_type_link:hover {
+  opacity: 0.7;
+}
+
+.hover_type_button:hover {
+  opacity: 0.8;
+}

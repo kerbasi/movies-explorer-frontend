@@ -22,7 +22,7 @@ function AboutMe() {
               заниматься фриланс-заказами и&nbsp;ушёл с&nbsp;постоянной работы.
             </p>
             <Link
-              className='about-me__link'
+              className='about-me__link hover-link'
               to='https://github.com/kerbasi'
               target='_blank'
               rel='noreferrer'

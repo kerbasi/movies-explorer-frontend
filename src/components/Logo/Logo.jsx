@@ -6,7 +6,7 @@ function Logo() {
   // return <img className='logo' src={logo} alt='logo' />;
   return (
     <div className='logo'>
-      <Link className='logo__link' to='/'>
+      <Link className='logo__link hover-button' to='/'>
         <img className='logo__img' src={logo} alt='logo' />
       </Link>
     </div>

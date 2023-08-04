@@ -8,7 +8,7 @@ function Portfolio() {
       <ul className='portfolio__list'>
         <li className='portfolio__list-item'>
           <Link
-            className='portfolio__link'
+            className='portfolio__link hover-link'
             to='https://kerbasi.github.io/how-to-learn/'
             target='_blank'
             rel='noreferrer'
@@ -19,7 +19,7 @@ function Portfolio() {
         </li>
         <li className='portfolio__list-item'>
           <Link
-            className='portfolio__link'
+            className='portfolio__link hover-link'
             to='https://kerbasi.github.io/russian-travel/'
             target='_blank'
             rel='noreferrer'
@@ -30,7 +30,7 @@ function Portfolio() {
         </li>
         <li className='portfolio__list-item'>
           <Link
-            className='portfolio__link'
+            className='portfolio__link hover-link'
             to='https://github.com/kerbasi/react-mesto-api-full-gha'
             target='_blank'
             rel='noreferrer'

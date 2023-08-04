@@ -7,10 +7,10 @@ function Navigation({ logined, burgerActive }) {
   const navigationClassName = `navigation ${
     burgerActive ? "navigation_type_burger" : ""
   }`;
-  const navigationLinkClassName = `navigation__link ${
+  const navigationLinkClassName = `navigation__link hover-link ${
     burgerActive ? "navigation__link_type_burger" : ""
   }`;
-  const navigationActiveLinkClassName = `navigation__link ${
+  const navigationActiveLinkClassName = `navigation__link hover-link ${
     burgerActive
       ? "navigation__link_type_burger navigation__link_burger-active"
       : "navigation__link_active"
@@ -22,7 +22,7 @@ function Navigation({ logined, burgerActive }) {
       ? "navigation__links-wrapper_type_main"
       : ""
   }`;
-  const navigationProfileLinkClassName = `navigation__link ${
+  const navigationProfileLinkClassName = `navigation__link hover-button ${
     burgerActive
       ? "navigation__link_type_profile navigation__link_type_profile-burger"
       : location === "/"

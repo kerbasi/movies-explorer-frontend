@@ -4,7 +4,7 @@ export const movies = [
   {
     img: movieImg,
     title: "33 слова о дизайне",
-    saved: false,
+    saved: true,
     duration: "1ч42м"
   },
   {
