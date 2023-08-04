@@ -2,11 +2,16 @@
   display: flex;
   width: 100%;
   align-items: center;
+  min-height: 100vh;
+}
+
+.navigation_type_burger {
+  flex-direction: column;
 }
 
 .navigation__links-wrapper {
   display: flex;
-  margin-left: 426px;
+  margin-left: calc((87% * (1140 / 1280)) / 2);
   gap: 16px;
   color: var(--color-black);
 }
@@ -17,6 +22,14 @@
   color: var(--color-white);
 }
 
+.navigation__links-wrapper_type_burger {
+  flex-direction: column;
+  margin-top: 159px;
+  margin-left: 0;
+  text-align: center;
+  gap: 28px;
+}
+
 .navigation__link {
   text-decoration: none;
   color: inherit;
@@ -25,8 +38,21 @@
   line-height: 18px;
 }
 
+.navigation__link_type_burger {
+  font-size: 18px;
+  font-weight: 500;
+  align-self: center;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+
 .navigation__link_active {
   font-weight: 500;
+}
+
+.navigation__link_burger-active {
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 4px;
 }
 
 .navigation__link_type_signup {
@@ -89,6 +115,13 @@
   color: var(--color-white);
   border: 2px solid var(--color-white);
   background-color: transparent;
+}
+
+.navigation__link_type_profile-burger {
+  margin-left: 0;
+  margin-top: auto;
+  margin-bottom: 90px;
+  margin-left: 0;
 }
 
 .navigation__account-logo {

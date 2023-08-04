@@ -2,69 +2,78 @@ import "./Navigation.css";
 import accountLogo from "../../images/account.svg";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-function Navigation({ logined, burgerActive }) {
+function Navigation({ burgerActive }) {
   const location = useLocation().pathname;
+  const navigationClassName = `navigation ${
+    burgerActive ? "navigation_type_burger" : ""
+  }`;
+  const navigationLinkClassName = `navigation__link ${
+    burgerActive ? "navigation__link_type_burger" : ""
+  }`;
+  const navigationActiveLinkClassName = `navigation__link ${
+    burgerActive
+      ? "navigation__link_type_burger navigation__link_burger-active"
+      : "navigation__link_active"
+  }`;
+  const navigationWrapperClassName = `navigation__links-wrapper ${
+    burgerActive
+      ? "navigation__links-wrapper_type_burger"
+      : location === "/"
+      ? "navigation__links-wrapper_type_main"
+      : ""
+  }`;
+  const navigationProfileLinkClassName = `navigation__link ${
+    burgerActive
+      ? "navigation__link_type_profile navigation__link_type_profile-burger"
+      : location === "/"
+      ? " navigation__link_type_profile navigation__link_type_profile-main"
+      : "navigation__link_type_profile"
+  }`;
   return (
-    <nav className='navigation'>
-      {(location === "/movies" ||
-        location === "/saved-movies" ||
-        location === "/profile") && (
-        <div className='navigation__links-wrapper'>
+    <nav className={navigationClassName}>
+      <div className={navigationWrapperClassName}>
+        {burgerActive && (
           <NavLink
             className={({ isActive }) =>
-              isActive
-                ? "navigation__link navigation__link_active"
-                : "navigation__link"
+              isActive ? navigationActiveLinkClassName : navigationLinkClassName
             }
-            to='/movies'
+            to='/'
           >
-            Фильмы
+            Главная
           </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "navigation__link navigation__link_active"
-                : "navigation__link"
-            }
-            to='/saved-movies'
-          >
-            Сохранённые фильмы
-          </NavLink>
-        </div>
-      )}
-      {location === "/" && logined && (
-        <div className='navigation__links-wrapper navigation__links-wrapper_type_main'>
-          <Link className='navigation__link' to='/movies'>
-            Фильмы
-          </Link>
-          <Link className='navigation__link' to='/saved-movies'>
-            Сохранённые фильмы
-          </Link>
-        </div>
-      )}
-      {logined && (
-        <>
-          <Link
-            className={`navigation__link ${
-              location === "/"
-                ? " navigation__link_type_profile navigation__link_type_profile-main"
-                : "navigation__link_type_profile"
-            }`}
-            to='/profile'
-          >
-            {location === "/" ? (
-              <img
-                className='navigation__account-logo'
-                src={accountLogo}
-                alt='account'
-              />
-            ) : (
-              ""
-            )}
-            Аккаунт
-          </Link>
-        </>
-      )}
+        )}
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? navigationActiveLinkClassName : navigationLinkClassName
+          }
+          to='/movies'
+        >
+          Фильмы
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? navigationActiveLinkClassName : navigationLinkClassName
+          }
+          to='/saved-movies'
+        >
+          Сохранённые фильмы
+        </NavLink>
+      </div>
+
+      <>
+        <Link className={navigationProfileLinkClassName} to='/profile'>
+          {location === "/" && !burgerActive ? (
+            <img
+              className='navigation__account-logo'
+              src={accountLogo}
+              alt='account'
+            />
+          ) : (
+            ""
+          )}
+          Аккаунт
+        </Link>
+      </>
     </nav>
   );
 }
