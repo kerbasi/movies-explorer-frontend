@@ -2,7 +2,7 @@ import "./Navigation.css";
 import accountLogo from "../../images/account.svg";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-function Navigation({ burgerActive }) {
+function Navigation({ logined, burgerActive }) {
   const location = useLocation().pathname;
   const navigationClassName = `navigation ${
     burgerActive ? "navigation_type_burger" : ""
@@ -31,49 +31,73 @@ function Navigation({ burgerActive }) {
   }`;
   return (
     <nav className={navigationClassName}>
-      <div className={navigationWrapperClassName}>
-        {burgerActive && (
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? navigationActiveLinkClassName : navigationLinkClassName
-            }
-            to='/'
-          >
-            Главная
-          </NavLink>
-        )}
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? navigationActiveLinkClassName : navigationLinkClassName
-          }
-          to='/movies'
-        >
-          Фильмы
-        </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? navigationActiveLinkClassName : navigationLinkClassName
-          }
-          to='/saved-movies'
-        >
-          Сохранённые фильмы
-        </NavLink>
-      </div>
+      {logined && (
+        <>
+          <div className={navigationWrapperClassName}>
+            {burgerActive && (
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? navigationActiveLinkClassName
+                    : navigationLinkClassName
+                }
+                to='/'
+              >
+                Главная
+              </NavLink>
+            )}
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? navigationActiveLinkClassName
+                  : navigationLinkClassName
+              }
+              to='/movies'
+            >
+              Фильмы
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? navigationActiveLinkClassName
+                  : navigationLinkClassName
+              }
+              to='/saved-movies'
+            >
+              Сохранённые фильмы
+            </NavLink>
+          </div>
 
-      <>
-        <Link className={navigationProfileLinkClassName} to='/profile'>
-          {location === "/" && !burgerActive ? (
-            <img
-              className='navigation__account-logo'
-              src={accountLogo}
-              alt='account'
-            />
-          ) : (
-            ""
-          )}
-          Аккаунт
-        </Link>
-      </>
+          <Link className={navigationProfileLinkClassName} to='/profile'>
+            {location === "/" && !burgerActive ? (
+              <img
+                className='navigation__account-logo'
+                src={accountLogo}
+                alt='account'
+              />
+            ) : (
+              ""
+            )}
+            Аккаунт
+          </Link>
+        </>
+      )}
+      {!logined && (
+        <>
+          <Link
+            className='navigation__link navigation__link_type_signup'
+            to='/signup'
+          >
+            Регистрация
+          </Link>
+          <Link
+            className='navigation__link navigation__link_type_login'
+            to='/signin'
+          >
+            Войти
+          </Link>
+        </>
+      )}
     </nav>
   );
 }

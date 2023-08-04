@@ -11,9 +11,13 @@ function MoviesCard({ movie }) {
       <img className='movies-card__image' src={movie.img} alt='movie' />
       <div className='movies-card__line-wrapper'>
         <h3 className='movies-card__title'>{movie.title}</h3>
-        <button className='movies-card__save-button'>
+        <button
+          className={`movies-card__button ${
+            location === "/saved-movies" ? "movies-card__button_type_cross" : ""
+          }`}
+        >
           <img
-            className='movies-card__save-button-image'
+            className='movies-card__button-image'
             src={movie.saved ? (location === "/movies" ? saved : cross) : save}
             alt='save button'
           />

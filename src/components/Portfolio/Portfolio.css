@@ -19,7 +19,7 @@
 .portfolio__list {
   list-style: none;
   padding: 0;
-  margin-top: 32px;
+  margin-top: 30px;
 }
 
 @media screen and (max-width: 550px) {
@@ -31,6 +31,10 @@
 .portfolio__list-item {
   margin: 0;
   border-bottom: 1px solid var(--color-grey-light-3);
+  height: 89px;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .portfolio__list-item:last-of-type {
@@ -41,10 +45,11 @@
   text-decoration: none;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
-  line-height: 87px;
+  flex: 1;
   letter-spacing: -1.2px;
   color: var(--color-primary);
   margin: 0;
@@ -66,10 +71,10 @@
 }
 
 .portfolio__text {
-  display: inline-block;
   margin: 0;
 }
 
 .portfolio__text_downed {
-  padding-top: 2px;
+  padding-top: 12px;
+  align-self: flex-end;
 }
