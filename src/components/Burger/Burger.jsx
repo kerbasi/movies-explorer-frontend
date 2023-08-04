@@ -17,7 +17,12 @@ function Burger() {
   };
   return (
     <div className={`burger ${burgerActive ? "burger_visible" : ""}`}>
-      <button className='burger__button' onClick={burgerHandler}>
+      <button
+        className={`burger__button ${
+          burgerActive ? "burger__button_type_cross" : ""
+        }`}
+        onClick={burgerHandler}
+      >
         <img
           className='burger__button-icon'
           src={

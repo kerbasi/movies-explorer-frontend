@@ -2,10 +2,8 @@ import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { useState } from "react";
 import { useEffect } from "react";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
 
-function MoviesCardList({ movies }) {
-  const { width } = useWindowDimensions();
+function MoviesCardList({ movies, width }) {
   const [addPages, setAddPages] = useState(0);
   const [pagesLimit, setPagesLimit] = useState(0);
   const [slicedMovies, setSlicedMovies] = useState([]);
@@ -13,9 +11,9 @@ function MoviesCardList({ movies }) {
     setPagesLimit((prev) => prev + addPages);
   };
   useEffect(() => {
-    if (width > 954) {
+    if (width > 950) {
       setAddPages(16);
-    } else if (width > 786) {
+    } else if (width > 768) {
       setAddPages(8);
     } else {
       setAddPages(5);
@@ -28,7 +26,7 @@ function MoviesCardList({ movies }) {
     if (pagesLimit === 0) {
       setPagesLimit(addPages);
     }
-  }, [addPages]);
+  }, [pagesLimit, addPages]);
   return (
     <section className='movies-card-list'>
       <ul className='movies-card-list__wrapper'>

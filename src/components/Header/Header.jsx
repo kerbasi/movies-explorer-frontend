@@ -1,12 +1,10 @@
 import "./Header.css";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 import Burger from "../Burger/Burger";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
 
-function Header({ logined, setLogined }) {
-  const { width } = useWindowDimensions();
+function Header({ logined, setLogined, width }) {
   const location = useLocation().pathname;
   const className = `header ${
     location !== "/" ? "header header_type_white" : ""

@@ -18,12 +18,16 @@
 
 .burger__button {
   position: absolute;
-  top: 15px;
-  right: 30px;
+  top: 14px;
+  right: 24px;
   visibility: visible;
   border: none;
   background-color: transparent;
   z-index: 1000;
+}
+
+.burger__button_type_cross {
+  right: 10px;
 }
 
 .burger__button-icon {

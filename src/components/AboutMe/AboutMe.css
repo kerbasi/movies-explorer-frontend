@@ -157,7 +157,7 @@
 
 @media screen and (max-width: 768px) {
   .about-me__photo {
-    max-width: 90%;
+    max-width: 82.5%;
     height: auto;
   }
 }

@@ -24,10 +24,10 @@
 
 .navigation__links-wrapper_type_burger {
   flex-direction: column;
-  margin-top: 159px;
+  margin-top: 162px;
   margin-left: 0;
   text-align: center;
-  gap: 28px;
+  gap: 26px;
 }
 
 .navigation__link {
@@ -42,7 +42,7 @@
   font-size: 18px;
   font-weight: 500;
   align-self: center;
-  padding-bottom: 4px;
+  padding-bottom: 5px;
   border-bottom: 2px solid transparent;
 }
 
@@ -65,7 +65,7 @@
   line-height: 16px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .navigation__link_type_signup {
     font-size: 10px;
   }
@@ -84,7 +84,7 @@
   justify-content: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .navigation__link_type_login {
     font-size: 10px;
     width: 54px;
