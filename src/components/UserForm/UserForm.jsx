@@ -74,9 +74,10 @@ function UserForm({
               ? "Уже зарегистрированы"
               : "Ещё не зарегистрированы"
           }? `}
-          <Link className='user-form__link hover hover_type_link'>{`${
-            name === "register" ? "Войти" : "Регистрация"
-          }?`}</Link>
+          <Link
+            className='user-form__link hover hover_type_link'
+            to={name === "register" ? "/signin" : "/signup"}
+          >{`${name === "register" ? "Войти" : "Регистрация"}?`}</Link>
         </p>
       )}
       {name === "profile" && !unlocked && (

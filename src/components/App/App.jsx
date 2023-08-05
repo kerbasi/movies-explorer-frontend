@@ -13,7 +13,7 @@ import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
 
 function App() {
-  const [logined, setLogined] = useState(true);
+  const [logined, setLogined] = useState(false);
 
   return (
     <div className='app'>
