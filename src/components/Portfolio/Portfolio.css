@@ -76,18 +76,7 @@
   }
 }
 
-.portfolio__text {
-  margin: 0;
-}
-
-.portfolio__text_downed {
-  padding-top: 12px;
-  align-self: flex-end;
-}
-
-@media screen and (max-width: 550px) {
-  .portfolio__text_downed {
-    padding-top: 2px;
-    align-self: flex-end;
-  }
+.portfolio__img {
+  padding-top: 5px;
+  padding-right: 5px;
 }

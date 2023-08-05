@@ -1,5 +1,6 @@
 import "./Portfolio.css";
 import { Link } from "react-router-dom";
+import arrow from "../../images/arrow.svg";
 
 function Portfolio() {
   return (
@@ -14,7 +15,7 @@ function Portfolio() {
             rel='noreferrer'
           >
             <p className='portfolio__text'>Статичный сайт</p>
-            <p className='portfolio__text portfolio__text_downed'>↗</p>
+            <img className='portfolio__img' src={arrow} alt='arrow' />
           </Link>
         </li>
         <li className='portfolio__list-item'>
@@ -25,7 +26,8 @@ function Portfolio() {
             rel='noreferrer'
           >
             <p className='portfolio__text'>Адаптивный сайт</p>
-            <p className='portfolio__text portfolio__text_downed'>↗</p>
+            <img className='portfolio__img' src={arrow} alt='arrow' />
+            {/* <p className='portfolio__text portfolio__text_downed'>↗</p> */}
           </Link>
         </li>
         <li className='portfolio__list-item'>
@@ -36,7 +38,7 @@ function Portfolio() {
             rel='noreferrer'
           >
             <p className='portfolio__text'>Одностраничное приложение</p>
-            <p className='portfolio__text portfolio__text_downed'>↗</p>
+            <img className='portfolio__img' src={arrow} alt='arrow' />
           </Link>
         </li>
       </ul>
