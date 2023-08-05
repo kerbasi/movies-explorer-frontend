@@ -22,7 +22,7 @@ function Burger() {
         <Logo />
       </div>
       <button
-        className={`burger__button ${
+        className={`burger__button hover hover_type_button ${
           burgerActive ? "burger__button_type_cross" : ""
         }`}
         onClick={burgerHandler}
