@@ -44,9 +44,11 @@ function Burger() {
           burgerActive ? "burger__container_active" : ""
         }`}
       >
-        <nav className='burger__nav'>
-          <Navigation logined={true} burgerActive={true} />
-        </nav>
+        {burgerActive && (
+          <nav className='burger__nav'>
+            <Navigation logined={true} burgerActive={true} />
+          </nav>
+        )}
       </div>
     </div>
   );

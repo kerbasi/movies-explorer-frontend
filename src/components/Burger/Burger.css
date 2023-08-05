@@ -77,10 +77,10 @@
 }
 
 .burger__container {
-  width: calc(100% * (520 / 768));
+  width: 0;
   height: 100%;
   background-color: var(--color-white);
-  transform: translateX(calc(100% + 100% * (520 / 768)));
+  /* transform: translateX(calc(100% + 100% * (520 / 768))); */
   transition: all 0.3s;
   z-index: 500;
 }
@@ -92,6 +92,6 @@
 }
 
 .burger__container_active {
-  transform: translateX(0);
-  transition: all 0.3s;
+  /* transform: translateX(0); */
+  width: calc(100% * (520 / 768));
 }
