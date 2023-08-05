@@ -17,7 +17,7 @@ function Register() {
       email: "pochta@yandex.ru",
       password: "11111111111111",
     });
-  }, []);
+  }, [setValues]);
   return (
     <main className='register'>
       <UserForm

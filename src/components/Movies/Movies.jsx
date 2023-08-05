@@ -12,10 +12,10 @@ function Movies() {
     });
   }, []);
   return (
-    <div className='movies'>
+    <main className='movies'>
       <SearchForm />
       {movies.length === 0 ? <Preloader /> : <MoviesCardList movies={movies} />}
-    </div>
+    </main>
   );
 }
 

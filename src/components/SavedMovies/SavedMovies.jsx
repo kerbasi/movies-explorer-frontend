@@ -12,7 +12,7 @@ function SavedMovies() {
     });
   }, []);
   return (
-    <div className='saved-movies'>
+    <main className='saved-movies'>
       <SearchForm />
       {movies.length === 0 ? (
         <Preloader />
@@ -21,7 +21,7 @@ function SavedMovies() {
           movies={movies.filter((movie) => movie.saved === true)}
         />
       )}
-    </div>
+    </main>
   );
 }
 

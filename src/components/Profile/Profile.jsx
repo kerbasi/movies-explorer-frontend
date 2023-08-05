@@ -28,7 +28,7 @@ function Profile({ user, setLogined }) {
     });
   }, [setValues]);
   return (
-    <main className='register'>
+    <main className='profile'>
       <UserForm
         title={`Привет, ${user}!`}
         name='profile'
