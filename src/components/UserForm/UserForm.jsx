@@ -54,19 +54,19 @@ function UserForm({
             >
               {errorMessage}
             </p>
-            <button
-              className={`user-form__button hover hover_type_button${
-                !isValid ? "user-form__button_disabled" : ""
-              }`}
-              type='submit'
-              from={name}
-              disabled={isValid ? false : true}
-            >
-              {buttonText}
-            </button>
           </div>
         )}
       </form>
+      <button
+        className={`user-form__button hover hover_type_button${
+          !isValid ? "user-form__button_disabled" : ""
+        }`}
+        type='submit'
+        from={name}
+        disabled={isValid ? false : true}
+      >
+        {buttonText}
+      </button>
       {(name === "register" || name === "login") && (
         <p className='user-form__text'>
           {`${
