@@ -8,12 +8,6 @@
   flex-direction: column;
 }
 
-@media screen and (max-width: 900px) {
-  .user-form {
-    margin-top: 231px;
-  }
-}
-
 @media screen and (max-width: 550px) {
   .user-form {
     margin-top: 56px;
@@ -32,7 +26,9 @@
 
 @media screen and (max-width: 900px) {
   .user-form_type_profile {
-    margin-top: 236px;
+    max-width: 410px;
+    padding: 199px 0 268px;
+    max-height: 950px;
   }
 }
 
@@ -190,7 +186,7 @@
 
 @media screen and (max-width: 900px) {
   .user-form__label_type_profile {
-    margin-top: 80px;
+    margin-top: 45px;
   }
 }
 

@@ -57,16 +57,18 @@ function UserForm({
           </div>
         )}
       </form>
-      <button
-        className={`user-form__button hover hover_type_button${
-          !isValid ? "user-form__button_disabled" : ""
-        }`}
-        type='submit'
-        from={name}
-        disabled={isValid ? false : true}
-      >
-        {buttonText}
-      </button>
+      {(name !== "profile" || unlocked) && (
+        <button
+          className={`user-form__button hover hover_type_button${
+            !isValid ? "user-form__button_disabled" : ""
+          }`}
+          type='submit'
+          from={name}
+          disabled={isValid ? false : true}
+        >
+          {buttonText}
+        </button>
+      )}
       {(name === "register" || name === "login") && (
         <p className='user-form__text'>
           {`${
