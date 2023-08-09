@@ -8,25 +8,28 @@
   flex-direction: column;
 }
 
+@media screen and (max-width: 900px) {
+  .user-form {
+    padding: 232px 0 222px;
+  }
+}
+
 @media screen and (max-width: 550px) {
   .user-form {
-    margin-top: 56px;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     max-width: 260px;
+    padding: 56px 0 16px;
   }
 }
 
 .user-form_type_profile {
   max-width: 410px;
-  padding: 58px 0 68px;
+  padding: 37px 0 68px;
   max-height: 626px;
 }
 
 @media screen and (max-width: 900px) {
   .user-form_type_profile {
-    max-width: 410px;
     padding: 199px 0 268px;
     max-height: 950px;
   }
@@ -35,8 +38,8 @@
 @media screen and (max-width: 550px) {
   .user-form_type_profile {
     max-width: 260px;
-    margin-top: 23px;
     align-items: stretch;
+    padding: 23px 0 222px;
   }
 }
 
@@ -83,38 +86,6 @@
   text-align: center;
 }
 
-@media screen and (max-width: 900px) {
-  .user-form__button-wrapper {
-    margin-top: 45px;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .user-form__button-wrapper {
-    margin-top: 132px;
-  }
-}
-
-.user-form__button-wrapper_type_login {
-  margin-top: 135px;
-}
-
-@media screen and (max-width: 900px) {
-  .user-form__button-wrapper_type_login {
-    margin-top: 134px;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .user-form__button-wrapper_type_login {
-    margin-top: 221px;
-  }
-}
-
-.user-form__button-wrapper_type_profile {
-  margin-top: 176px;
-}
-
 .user-form__button {
   width: 396px;
   height: 45px;
@@ -158,17 +129,24 @@
 
 .user-form__form {
   margin-top: 21px;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 550px) {
   .user-form__form {
-    margin-top: 41px;
+    margin-top: 63px;
+    width: 100%;
   }
+}
+
+.user-form__form_type_profile {
+  margin-top: 0;
 }
 
 @media screen and (max-width: 550px) {
   .user-form__form_type_profile {
-    margin-top: 0px;
+    margin-top: 22px;
   }
 }
 
@@ -220,6 +198,11 @@
   font-size: 13px;
   font-weight: 400;
   line-height: normal;
+}
+
+@media screen and (max-width: 550px) {
+  .user-form__input {
+  }
 }
 
 .user-form__input_type_profile {
@@ -279,11 +262,6 @@
   flex-direction: column;
   align-items: center;
   margin-top: auto;
-}
-
-@media screen and (max-width: 900px) {
-  .user-form__profile-button-wrapper {
-  }
 }
 
 @media screen and (max-width: 550px) {
