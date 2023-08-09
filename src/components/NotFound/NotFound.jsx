@@ -3,13 +3,19 @@ import { Link, useNavigate } from "react-router-dom";
 
 function NotFound() {
   const navigation = useNavigate();
+  const backHandler = () => {
+    navigation(-1);
+  };
   return (
     <main className='not-found'>
       <h1 className='not-found__title'>404</h1>
       <p className='not-found__text'>Страница не найдена</p>
-      <Link className='not-found__link' to={navigation(-1)}>
+      <button
+        className='not-found__button hover hover_type_link'
+        onClick={backHandler}
+      >
         Назад
-      </Link>
+      </button>
     </main>
   );
 }

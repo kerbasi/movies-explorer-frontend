@@ -1,7 +1,7 @@
 .user-form {
   width: 100%;
   max-width: 396px;
-  margin: 70px auto 0;
+  margin: 0 auto 0;
   font-family: var(--font-primary);
 }
 
@@ -23,7 +23,10 @@
 
 .user-form_type_profile {
   max-width: 410px;
-  margin-top: 74px;
+  padding: 58px 0 68px;
+  max-height: 626px;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 900px) {
@@ -42,7 +45,6 @@
 
 .user-form__title {
   font-size: 24px;
-  margin: 38px 0;
   font-weight: 500;
   line-height: normal;
 }
@@ -171,7 +173,7 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--color-grey-light-3);
-  margin-top: 105px;
+  margin-top: 90px;
   font-size: 11px;
   font-weight: 500;
   flex-wrap: wrap;
@@ -272,12 +274,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 198px;
+  margin-top: auto;
 }
 
 @media screen and (max-width: 900px) {
   .user-form__profile-button-wrapper {
-    margin-top: 190px;
   }
 }
 
