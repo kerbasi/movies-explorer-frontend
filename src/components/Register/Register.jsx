@@ -13,9 +13,9 @@ function Register() {
   };
   useEffect(() => {
     setValues({
-      name: "Виталий",
-      email: "pochta@yandex.ru",
-      password: "11111111111111",
+      name: "",
+      email: "",
+      password: "",
     });
   }, [setValues]);
   return (
@@ -36,6 +36,7 @@ function Register() {
             }`}
             type='text'
             name='name'
+            placeholder='Ваше имя'
             id='name'
             form='register'
             required
@@ -54,6 +55,7 @@ function Register() {
             }`}
             type='email'
             name='email'
+            placeholder='example@yandex.ru'
             id='email'
             form='register'
             required
@@ -70,6 +72,7 @@ function Register() {
             }`}
             type='password'
             name='password'
+            placeholder='Ваш пароль'
             id='password'
             form='register'
             required

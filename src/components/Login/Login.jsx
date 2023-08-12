@@ -16,7 +16,7 @@ function Login({ setLogined }) {
   };
   useEffect(() => {
     setValues({
-      email: "pochta@yandex.ru",
+      email: "",
       password: "",
     });
   }, [setValues]);
@@ -38,6 +38,7 @@ function Login({ setLogined }) {
             }`}
             type='email'
             name='email'
+            placeholder='example@yandex.ru'
             id='email'
             form='login'
             required
@@ -54,6 +55,7 @@ function Login({ setLogined }) {
             }`}
             type='password'
             name='password'
+            placeholder='Ваш пароль'
             id='password'
             form='login'
             required
