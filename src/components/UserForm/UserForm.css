@@ -144,6 +144,12 @@
   margin-top: 0;
 }
 
+@media screen and (max-width: 900px) {
+  .user-form__form_type_profile {
+    margin-top: 20px;
+  }
+}
+
 @media screen and (max-width: 550px) {
   .user-form__form_type_profile {
     margin-top: 22px;
