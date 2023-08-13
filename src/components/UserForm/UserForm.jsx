@@ -20,7 +20,11 @@ function UserForm({
         name === "profile" ? "user-form_type_profile" : ""
       }`}
     >
-      {name !== "profile" && <Logo />}
+      {name !== "profile" && (
+        <div className='user-form__logo'>
+          <Logo />
+        </div>
+      )}
       <h1
         className={`user-form__title ${
           name === "profile" ? "user-form__title_type_profile" : ""
