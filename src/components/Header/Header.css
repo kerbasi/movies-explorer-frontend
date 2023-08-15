@@ -1,0 +1,31 @@
+.header {
+  width: 100%;
+  font-family: var(--font-primary);
+  font-size: 12px;
+  background-color: var(--color-blue);
+}
+
+.header_type_white {
+  background-color: var(--color-white);
+}
+
+.header__wrapper {
+  margin: 0 auto;
+  max-width: 1140px;
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .header__wrapper {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .header__wrapper {
+    padding: 0 14px;
+  }
+}

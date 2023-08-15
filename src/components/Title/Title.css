@@ -1,0 +1,18 @@
+.title {
+  font-family: var(--font-primary);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.88px;
+  display: block;
+  border-bottom: 1px solid var(--color-primary);
+  line-height: 70px;
+  margin: 0;
+}
+
+@media screen and (max-width: 550px) {
+  .title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    line-height: 73px;
+  }
+}

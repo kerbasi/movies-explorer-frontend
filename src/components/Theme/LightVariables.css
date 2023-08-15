@@ -1,0 +1,50 @@
+﻿:root {
+  --font-primary: "Inter", "Arial", sans-serif;
+  --transparency: 50%;
+
+  --color-primary: #000000;
+  --color-secondary: #a0a0a0;
+
+  --color-primary-with-trans: color-mix(
+    in srgb,
+    var(--color-primary) var(--transparency, 100%),
+    transparent
+  );
+
+  --color-white: #ffffff;
+
+  --color-green: #2be080;
+
+  --color-grey-light-1: #f5f5f5;
+  --color-grey-light-2: #f2f2f2;
+  --color-grey-light-3: #e8e8e8;
+  --color-grey-light-4: #fafafa;
+  --color-grey-light-5: #f9f9f9;
+  --color-grey-light-6: #fdfdfd;
+  --color-grey-light-7: #eeeeee;
+  --color-grey-light-8: #f9f9f9;
+
+  --color-grey-dark-1: #c2c2c2;
+
+  --color-blue: #465dff;
+
+  --color-red-1: #ff6838;
+  --color-red-2: #ee3465;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hover {
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.hover_type_link:hover {
+  opacity: 0.7;
+}
+
+.hover_type_button:hover {
+  opacity: 0.8;
+}
