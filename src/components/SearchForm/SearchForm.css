@@ -80,13 +80,30 @@
 }
 
 .search-form__filter-checkbox {
-  margin: 42px 0 51px;
+  margin: 0;
+  margin-bottom: 51px;
   display: flex;
   justify-content: center;
 }
 
 @media screen and (max-width: 550px) {
   .search-form__filter-checkbox {
-    margin: 44px 0 49px;
+    margin-bottom: 49px;
+  }
+}
+
+.search-form__error {
+  height: 32px;
+  text-align: center;
+  padding-top: 10px;
+  color: var(--color-red-1);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 550px) {
+  .search-form__error {
+    height: 34px;
+    font-size: 14px;
   }
 }

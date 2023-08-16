@@ -252,11 +252,6 @@
   line-height: normal;
 }
 
-@media screen and (max-width: 550px) {
-  .user-form__input {
-  }
-}
-
 .user-form__input_type_profile {
   display: inline-block;
   width: 70%;
