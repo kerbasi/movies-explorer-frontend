@@ -1,5 +1,9 @@
 import movieImg from '../images/cover-art.jpg'
 
+export const MOVIES_URL = "https://api.nomoreparties.co/"
+
+export const MOVIES_TIME_LIMIT = 40
+
 export const movies = [
   {
     img: movieImg,

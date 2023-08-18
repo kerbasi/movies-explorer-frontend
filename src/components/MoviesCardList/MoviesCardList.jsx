@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
-function MoviesCardList({ movies }) {
+function MoviesCardList({ movies, isError }) {
   const [addPages, setAddPages] = useState(0);
   const [pagesLimit, setPagesLimit] = useState(0);
   const [slicedMovies, setSlicedMovies] = useState([]);
@@ -31,23 +31,33 @@ function MoviesCardList({ movies }) {
   }, [pagesLimit, addPages]);
   return (
     <section className='movies-card-list'>
-      <ul className='movies-card-list__wrapper'>
-        {slicedMovies.map((movie) => {
-          return <MoviesCard movie={movie} key={Math.random() * 1000} />;
-        })}
-      </ul>
-      <div className='movies-card-list__more_button-wrapper'>
-        <button
-          className={`movies-card-list__more-button hover hover_type_button ${
-            movies.length < pagesLimit
-              ? "movies-card-list__more-button movies-card-list__more-button_hidden"
-              : ""
-          }`}
-          onClick={paginationHandler}
-        >
-          Ещё
-        </button>
-      </div>
+      {isError || !movies.length ? (
+        <div className='movies-card-list__error'>
+          {isError
+            ? "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+            : "Ничего не найдено"}
+        </div>
+      ) : (
+        <>
+          <ul className='movies-card-list__wrapper'>
+            {slicedMovies.map((movie) => {
+              return <MoviesCard movie={movie} key={Math.random() * 1000} />;
+            })}
+          </ul>
+          <div className='movies-card-list__more_button-wrapper'>
+            <button
+              className={`movies-card-list__more-button hover hover_type_button ${
+                movies.length < pagesLimit
+                  ? "movies-card-list__more-button movies-card-list__more-button_hidden"
+                  : ""
+              }`}
+              onClick={paginationHandler}
+            >
+              Ещё
+            </button>
+          </div>
+        </>
+      )}
     </section>
   );
 }

@@ -1,16 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./SearchForm.css";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import find from "../../images/find.svg";
 
-function SearchForm() {
-  const [inputText, setInputText] = useState("");
+function SearchForm({ handleSearch, query, handleLimitToggle, isLimited }) {
+  const [inputText, setInputText] = useState(query);
   const [errorText, setErrorText] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrorText(inputText ? "" : "Нужно ввести ключевое слово");
+    if (inputText) {
+      handleSearch(inputText);
+    }
   };
+  useEffect(() => {
+    setInputText(query);
+  }, [query]);
   return (
     <div className='search-form'>
       <form className='search-form__form'>
@@ -32,7 +38,11 @@ function SearchForm() {
         </div>
         <div className='search-form__error'>{errorText}</div>
         <div className='search-form__filter-checkbox'>
-          <FilterCheckbox label='Короткометражки' />
+          <FilterCheckbox
+            label='Короткометражки'
+            handleLimitToggle={handleLimitToggle}
+            isLimited={isLimited}
+          />
         </div>
       </form>
     </div>

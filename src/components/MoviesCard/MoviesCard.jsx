@@ -3,14 +3,20 @@ import save from "../../images/save.svg";
 import saved from "../../images/saved.svg";
 import cross from "../../images/delete.svg";
 import { useLocation } from "react-router-dom";
+import { MOVIES_URL } from "../../utils/constants";
+import { calculateDuration } from "../../utils/utils";
 
 function MoviesCard({ movie }) {
   const location = useLocation().pathname;
   return (
     <li className='movies-card'>
-      <img className='movies-card__image' src={movie.img} alt='movie' />
+      <img
+        className='movies-card__image'
+        src={`${MOVIES_URL + movie.image.url}`}
+        alt='movie'
+      />
       <div className='movies-card__line-wrapper'>
-        <h3 className='movies-card__title'>{movie.title}</h3>
+        <h3 className='movies-card__title'>{movie.nameRU}</h3>
         <button
           className={`movies-card__button hover hover_type_button ${
             location === "/saved-movies" ? "movies-card__button_type_cross" : ""
@@ -23,7 +29,9 @@ function MoviesCard({ movie }) {
           />
         </button>
       </div>
-      <p className='movies-card__duration'>{movie.duration}</p>
+      <p className='movies-card__duration'>
+        {calculateDuration(movie.duration)}
+      </p>
     </li>
   );
 }
