@@ -31,39 +31,11 @@ function MoviesCardList({ movies, isError }) {
       setPagesLimit(5);
       setAddPages(2);
     }
-    console.log(isWidthExtraLarge, isWidthLarge, isWidthMedium);
   }, [isWidthLarge, isWidthMedium, isWidthExtraLarge]);
 
   useEffect(() => {
-    console.log(pagesLimit);
     setSlicedMovies(movies.slice(0, pagesLimit));
   }, [movies, pagesLimit]);
-
-  // useEffect(() => {
-  //   if (isWidthLarge) {
-  //     setAddPages(4);
-  //   } else if (isWidthMedium) {
-  //     setAddPages(3);
-  //   } else {
-  //     setAddPages(2);
-  //   }
-  // }, [isWidthLarge, isWidthMedium]);
-
-  // useEffect(() => {
-  //   if (isWidthLarge) {
-  //     setAddPages(16);
-  //   } else if (isWidthMedium) {
-  //     setAddPages(8);
-  //   } else {
-  //     setAddPages(5);
-  //   }
-  // }, [isWidthLarge, isWidthMedium]);
-  // useEffect(() => {
-  //   setSlicedMovies(movies.slice(0, pagesLimit));
-  // }, [pagesLimit, movies]);
-  // useEffect(() => {
-  //   setPagesLimit(addPages);
-  // }, [pagesLimit, addPages]);
 
   return (
     <section className='movies-card-list'>
