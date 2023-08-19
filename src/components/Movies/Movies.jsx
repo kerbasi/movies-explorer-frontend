@@ -97,6 +97,7 @@ function Movies() {
         <MoviesCardList
           movies={isLimited ? limitedMovies : filteredMovies}
           isError={isError}
+          query={query}
         />
       )}
     </main>
