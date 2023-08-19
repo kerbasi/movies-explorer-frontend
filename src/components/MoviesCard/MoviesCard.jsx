@@ -2,7 +2,7 @@ import "./MoviesCard.css";
 import save from "../../images/save.svg";
 import saved from "../../images/saved.svg";
 import cross from "../../images/delete.svg";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MOVIES_URL } from "../../utils/constants";
 import { calculateDuration } from "../../utils/utils";
 
@@ -10,11 +10,17 @@ function MoviesCard({ movie }) {
   const location = useLocation().pathname;
   return (
     <li className='movies-card'>
-      <img
-        className='movies-card__image'
-        src={`${MOVIES_URL + movie.image.url}`}
-        alt='movie'
-      />
+      <Link
+        className='movies-card__link'
+        to={movie.trailerLink}
+        target='_blank'
+      >
+        <img
+          className='movies-card__image'
+          src={`${MOVIES_URL + movie.image.url}`}
+          alt='movie'
+        />
+      </Link>
       <div className='movies-card__line-wrapper'>
         <h3 className='movies-card__title'>{movie.nameRU}</h3>
         <button
