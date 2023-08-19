@@ -60,7 +60,6 @@ function Movies() {
   }, [filteredMovies]);
 
   useEffect(() => {
-    console.log("bad");
     localStorage.setItem("isLimited", JSON.stringify(isLimited));
     if (isLimited) handleLimit();
   }, [isLimited, handleLimit]);

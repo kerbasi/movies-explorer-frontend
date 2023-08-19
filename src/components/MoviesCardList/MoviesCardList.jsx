@@ -5,30 +5,66 @@ import { useEffect } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 function MoviesCardList({ movies, isError }) {
+  const isWidthExtraLarge = useMediaQuery("1280px");
+  const isWidthLarge = useMediaQuery("955px");
+  const isWidthMedium = useMediaQuery("768px");
+
   const [addPages, setAddPages] = useState(0);
   const [pagesLimit, setPagesLimit] = useState(0);
   const [slicedMovies, setSlicedMovies] = useState([]);
+
   const paginationHandler = () => {
     setPagesLimit((prev) => prev + addPages);
   };
-  const isWidthLarge = useMediaQuery("950px");
-  const isWidthMedium = useMediaQuery("768px");
+
   useEffect(() => {
-    console.log(isWidthLarge, isWidthMedium);
-    if (isWidthLarge) {
-      setAddPages(16);
+    if (isWidthExtraLarge) {
+      setPagesLimit(16);
+      setAddPages(4);
+    } else if (isWidthLarge) {
+      setPagesLimit(12);
+      setAddPages(3);
     } else if (isWidthMedium) {
-      setAddPages(8);
+      setPagesLimit(8);
+      setAddPages(2);
     } else {
-      setAddPages(5);
+      setPagesLimit(5);
+      setAddPages(2);
     }
-  }, [isWidthLarge, isWidthMedium]);
+    console.log(isWidthExtraLarge, isWidthLarge, isWidthMedium);
+  }, [isWidthLarge, isWidthMedium, isWidthExtraLarge]);
+
   useEffect(() => {
+    console.log(pagesLimit);
     setSlicedMovies(movies.slice(0, pagesLimit));
-  }, [pagesLimit, movies]);
-  useEffect(() => {
-    setPagesLimit(addPages);
-  }, [pagesLimit, addPages]);
+  }, [movies, pagesLimit]);
+
+  // useEffect(() => {
+  //   if (isWidthLarge) {
+  //     setAddPages(4);
+  //   } else if (isWidthMedium) {
+  //     setAddPages(3);
+  //   } else {
+  //     setAddPages(2);
+  //   }
+  // }, [isWidthLarge, isWidthMedium]);
+
+  // useEffect(() => {
+  //   if (isWidthLarge) {
+  //     setAddPages(16);
+  //   } else if (isWidthMedium) {
+  //     setAddPages(8);
+  //   } else {
+  //     setAddPages(5);
+  //   }
+  // }, [isWidthLarge, isWidthMedium]);
+  // useEffect(() => {
+  //   setSlicedMovies(movies.slice(0, pagesLimit));
+  // }, [pagesLimit, movies]);
+  // useEffect(() => {
+  //   setPagesLimit(addPages);
+  // }, [pagesLimit, addPages]);
+
   return (
     <section className='movies-card-list'>
       {isError || !movies.length ? (
@@ -41,7 +77,7 @@ function MoviesCardList({ movies, isError }) {
         <>
           <ul className='movies-card-list__wrapper'>
             {slicedMovies.map((movie) => {
-              return <MoviesCard movie={movie} key={Math.random() * 1000} />;
+              return <MoviesCard movie={movie} key={movie.id} />;
             })}
           </ul>
           <div className='movies-card-list__more_button-wrapper'>
