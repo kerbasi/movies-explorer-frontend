@@ -10,6 +10,7 @@ function MoviesCardList({
   query,
   handleSaveMovie,
   savedMovies,
+  handleDeleteMovie,
 }) {
   const isWidthExtraLarge = useMediaQuery("1280px");
   const isWidthLarge = useMediaQuery("955px");
@@ -62,6 +63,7 @@ function MoviesCardList({
                   movie={movie}
                   key={movie.id}
                   handleSaveMovie={handleSaveMovie}
+                  handleDeleteMovie={handleDeleteMovie}
                   savedMovies={savedMovies}
                 />
               );

@@ -7,19 +7,26 @@ import { MOVIES_URL } from "../../utils/constants";
 import { calculateDuration } from "../../utils/utils";
 import { useEffect, useState } from "react";
 
-function MoviesCard({ movie, handleSaveMovie, savedMovies }) {
+function MoviesCard({
+  movie,
+  handleSaveMovie,
+  savedMovies,
+  handleDeleteMovie,
+}) {
   const location = useLocation().pathname;
   const [isSaved, setIsSaved] = useState(false);
   useEffect(() => {
     if (savedMovies.find((item) => item.movieId === movie.id)) {
       setIsSaved(true);
+    } else {
+      setIsSaved(false);
     }
   }, [savedMovies, movie.id]);
   const handleSave = () => {
     handleSaveMovie(movie);
   };
   const handleDelete = () => {
-    console.log("delete");
+    handleDeleteMovie(movie.id);
   };
   return (
     <li className='movies-card'>

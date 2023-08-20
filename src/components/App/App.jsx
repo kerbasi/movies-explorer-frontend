@@ -9,6 +9,7 @@ import {
   updateMe,
   createMovie,
   getMovies,
+  deleteMovie,
 } from "../../utils/MainApi";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { MOVIES_URL } from "../../utils/constants";
@@ -85,6 +86,20 @@ function App() {
       .catch((err) => console.log(err));
   };
 
+  const handleDeleteMovie = (id) => {
+    deleteMovie(id)
+      .then((res) => {
+        if (res) {
+          setSavedMovies((prev) =>
+            prev.filter((movie) => {
+              return movie.movieId !== id;
+            })
+          );
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     getUser()
       .then((res) => {
@@ -123,6 +138,7 @@ function App() {
                 <Movies
                   showPreloader={false}
                   handleSaveMovie={handleSaveMovie}
+                  handleDeleteMovie={handleDeleteMovie}
                   savedMovies={savedMovies}
                 />{" "}
                 <Footer />

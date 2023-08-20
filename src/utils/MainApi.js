@@ -55,3 +55,7 @@ export function createMovie(movie) {
 export function getMovies() {
   return makeRequest(API_URL, "movies", "GET", true);
 }
+
+export function deleteMovie(id) {
+  return makeRequest(API_URL, `movies/${id}`, 'DELETE', true)
+}
