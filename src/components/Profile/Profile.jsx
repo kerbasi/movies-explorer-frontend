@@ -1,18 +1,20 @@
 import "./Profile.css";
 import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { REGEXP_NAME } from "../../utils/constants";
 
-function Profile({ user, handleLogout }) {
+function Profile({ user, handleLogout, handleUserUpdate, errorMessage }) {
   const [unlocked, setUnlocked] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
   const { values, handleChange, errors, isValid, setValues } =
     useFormAndValidation();
+  const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
-    setErrorMessage("500 На сервере произошла ошибка");
+    handleUserUpdate({ name: values.name, email: values.email }, setUnlocked);
   };
   const onUnlock = () => {
     setUnlocked(true);
@@ -22,11 +24,12 @@ function Profile({ user, handleLogout }) {
     handleLogout();
   };
   useEffect(() => {
+    const { name, email } = currentUser;
     setValues({
-      name: "Виталий",
-      email: "pochta@yandex.ru",
+      name: name,
+      email: email,
     });
-  }, [setValues]);
+  }, [setValues, currentUser]);
   return (
     <main className='profile'>
       <UserForm
@@ -54,8 +57,9 @@ function Profile({ user, handleLogout }) {
             id='name'
             form='profile'
             required
-            minLength='2'
-            maxLength='30'
+            pattern={REGEXP_NAME}
+            minLength={2}
+            maxLength={30}
             onChange={handleChange}
             value={values.name || ""}
             disabled={!unlocked}

@@ -15,5 +15,12 @@ export function getUser() {
 }
 
 export function logout() {
-  return makeRequest(API_URL, "/signout", "POST", true);
+  return makeRequest(API_URL, "signout", "POST", true);
+}
+
+export function updateMe({ name, email }) {
+  return makeRequest(API_URL, "users/me", "PATCH", true, {
+    name,
+    email,
+  });
 }
