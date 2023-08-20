@@ -41,7 +41,7 @@ function MoviesCard({
       >
         <img
           className='movies-card__image'
-          src={movie.imgage ? `${MOVIES_URL + movie.image.url}` : movie.img}
+          src={movie.image ? `${MOVIES_URL + movie.image.url}` : movie.img}
           alt='movie'
         />
       </Link>

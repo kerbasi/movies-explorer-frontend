@@ -43,7 +43,6 @@ function MoviesCardList({
   useEffect(() => {
     setSlicedMovies(movies.slice(0, pagesLimit));
   }, [movies, pagesLimit]);
-
   return (
     <section className='movies-card-list'>
       {isError || !movies.length ? (

@@ -29,8 +29,25 @@ function SavedMovies({ handleSaveMovie, savedMovies, handleDeleteMovie }) {
   }, [filteredMovies]);
 
   useEffect(() => {
-    if (savedMovies.length) setFilteredMovies([...savedMovies]);
+    setFilteredMovies([...savedMovies]);
   }, [savedMovies]);
+
+  useEffect(() => {
+    if (isLimited) handleLimit();
+  }, [isLimited, handleLimit]);
+
+  useEffect(() => {
+    if (savedMovies.length) {
+      if (isLimited)
+        setFilteredMovies(
+          filterMoviesByTime(filterMoviesByName(savedMovies, query))
+        );
+      else {
+        setFilteredMovies(filterMoviesByName(savedMovies, query));
+      }
+    }
+  }, [savedMovies, query, isLimited]);
+
   return (
     <main className='saved-movies'>
       <SearchForm
@@ -43,7 +60,7 @@ function SavedMovies({ handleSaveMovie, savedMovies, handleDeleteMovie }) {
       <MoviesCardList
         movies={isLimited ? limitedMovies : filteredMovies}
         isError={false}
-        query={""}
+        query={query}
         handleSaveMovie={handleSaveMovie}
         handleDeleteMovie={handleDeleteMovie}
         savedMovies={savedMovies}
