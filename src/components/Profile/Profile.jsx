@@ -4,7 +4,7 @@ import useFormAndValidation from "../../hooks/useFormAndValidation";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Profile({ user, setLogined }) {
+function Profile({ user, handleLogout }) {
   const [unlocked, setUnlocked] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const { values, handleChange, errors, isValid, setValues } =
@@ -19,7 +19,7 @@ function Profile({ user, setLogined }) {
   };
   const onLogout = () => {
     navigate("/");
-    setLogined(false);
+    handleLogout();
   };
   useEffect(() => {
     setValues({

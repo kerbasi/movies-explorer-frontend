@@ -1,18 +1,14 @@
 import "./Login.css";
 import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-function Login({ setLogined }) {
-  const navigate = useNavigate();
-  const [errorMessage] = useState("");
+function Login({ handleLogin, errorMessage }) {
   const { values, handleChange, errors, isValid, setValues } =
     useFormAndValidation();
   const onSubmit = (e) => {
     e.preventDefault();
-    navigate("/");
-    setLogined(true);
+    handleLogin(values.email, values.password);
   };
   useEffect(() => {
     setValues({
@@ -59,8 +55,7 @@ function Login({ setLogined }) {
             id='password'
             form='login'
             required
-            minLength='8'
-            maxLength='30'
+            pattern='.{8,}'
             onChange={handleChange}
             value={values.password || ""}
           />

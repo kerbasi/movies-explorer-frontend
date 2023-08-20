@@ -5,3 +5,7 @@ import { API_URL } from './constants'
 export function register(name, email, password) {
   return makeRequest(API_URL, 'signup', 'POST', false, { name, email, password })
 }
+
+export function login(email, password) {
+  return makeRequest(API_URL, 'signin', 'POST', false, { email, password })
+}

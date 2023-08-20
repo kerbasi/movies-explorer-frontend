@@ -1,19 +1,15 @@
 import "./Register.css";
 import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
-import { useEffect, useState } from "react";
-import { register } from "../../utils/MainApi";
+import { useEffect } from "react";
 import { REGEXP_NAME } from "../../utils/constants";
 
-function Register() {
-  const [errorMessage, setErrorMessage] = useState("");
+function Register({ handleRegister, errorMessage }) {
   const { values, handleChange, errors, isValid, setValues } =
     useFormAndValidation();
   const onSubmit = (e) => {
     e.preventDefault();
-    register(values.name, values.email, values.password)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    handleRegister(values.name, values.email, values.password);
   };
   useEffect(() => {
     setValues({
