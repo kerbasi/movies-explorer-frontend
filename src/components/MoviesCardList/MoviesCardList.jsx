@@ -4,7 +4,13 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
-function MoviesCardList({ movies, isError, query, handleSaveMovie }) {
+function MoviesCardList({
+  movies,
+  isError,
+  query,
+  handleSaveMovie,
+  savedMovies,
+}) {
   const isWidthExtraLarge = useMediaQuery("1280px");
   const isWidthLarge = useMediaQuery("955px");
   const isWidthMedium = useMediaQuery("768px");
@@ -56,6 +62,7 @@ function MoviesCardList({ movies, isError, query, handleSaveMovie }) {
                   movie={movie}
                   key={movie.id}
                   handleSaveMovie={handleSaveMovie}
+                  savedMovies={savedMovies}
                 />
               );
             })}

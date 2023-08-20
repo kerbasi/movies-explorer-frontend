@@ -5,9 +5,22 @@ import cross from "../../images/delete.svg";
 import { Link, useLocation } from "react-router-dom";
 import { MOVIES_URL } from "../../utils/constants";
 import { calculateDuration } from "../../utils/utils";
+import { useEffect, useState } from "react";
 
-function MoviesCard({ movie, handleSaveMovie }) {
+function MoviesCard({ movie, handleSaveMovie, savedMovies }) {
   const location = useLocation().pathname;
+  const [isSaved, setIsSaved] = useState(false);
+  useEffect(() => {
+    if (savedMovies.find((item) => item.movieId === movie.id)) {
+      setIsSaved(true);
+    }
+  }, [savedMovies, movie.id]);
+  const handleSave = () => {
+    handleSaveMovie(movie);
+  };
+  const handleDelete = () => {
+    console.log("delete");
+  };
   return (
     <li className='movies-card'>
       <Link
@@ -27,11 +40,11 @@ function MoviesCard({ movie, handleSaveMovie }) {
           className={`movies-card__button hover hover_type_button ${
             location === "/saved-movies" ? "movies-card__button_type_cross" : ""
           }`}
-          onClick={() => handleSaveMovie(movie)}
+          onClick={isSaved ? handleDelete : handleSave}
         >
           <img
             className='movies-card__button-image'
-            src={movie.saved ? (location === "/movies" ? saved : cross) : save}
+            src={isSaved ? (location === "/movies" ? saved : cross) : save}
             alt='save button'
           />
         </button>

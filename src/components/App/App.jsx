@@ -76,12 +76,10 @@ function App() {
   const handleSaveMovie = (movie) => {
     movie.img = MOVIES_URL + movie.image.url;
     movie.movieId = movie.id;
-    console.log(movie);
     createMovie(movie)
       .then((res) => {
-        console.log(res);
         if (res) {
-          setSavedMovies((prev) => [res, ...prev]);
+          setSavedMovies((prev) => [res.data, ...prev]);
         }
       })
       .catch((err) => console.log(err));
@@ -98,7 +96,9 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-    getMovies().then((res) => console.log(res));
+    getMovies().then((res) => {
+      setSavedMovies(res);
+    });
   }, [logined]);
 
   return (
@@ -123,6 +123,7 @@ function App() {
                 <Movies
                   showPreloader={false}
                   handleSaveMovie={handleSaveMovie}
+                  savedMovies={savedMovies}
                 />{" "}
                 <Footer />
               </>
