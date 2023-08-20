@@ -18,7 +18,6 @@ export const useMediaQuery = (size) => {
     }
     const listener = () => {
       setMatches(media.matches)
-      console.log('done');
     };
     window.addEventListener('resize', throttle);
     return () => window.removeEventListener('resize', throttle);

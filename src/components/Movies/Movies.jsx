@@ -42,7 +42,6 @@ function Movies({ handleSaveMovie, savedMovies, handleDeleteMovie }) {
     setQuery(query);
     localStorage.setItem("query", JSON.stringify(query));
     getAllMovies();
-    console.log(query);
     handleFilter(query);
     if (isLimited) handleLimit();
   };
@@ -90,6 +89,7 @@ function Movies({ handleSaveMovie, savedMovies, handleDeleteMovie }) {
         query={query}
         handleLimitToggle={handleLimitToggle}
         isLimited={isLimited}
+        useMemory={true}
       />
       {isLoading ? (
         <Preloader />

@@ -16,17 +16,21 @@ function MoviesCard({
   const location = useLocation().pathname;
   const [isSaved, setIsSaved] = useState(false);
   useEffect(() => {
-    if (savedMovies.find((item) => item.movieId === movie.id)) {
+    if (
+      savedMovies.find(
+        (item) => item.movieId === movie.id || item.movieId === movie.movieId
+      )
+    ) {
       setIsSaved(true);
     } else {
       setIsSaved(false);
     }
-  }, [savedMovies, movie.id]);
+  }, [savedMovies, movie]);
   const handleSave = () => {
     handleSaveMovie(movie);
   };
   const handleDelete = () => {
-    handleDeleteMovie(movie.id);
+    handleDeleteMovie(movie.id ? movie.id : movie.movieId);
   };
   return (
     <li className='movies-card'>
@@ -37,7 +41,7 @@ function MoviesCard({
       >
         <img
           className='movies-card__image'
-          src={`${MOVIES_URL + movie.image.url}`}
+          src={movie.imgage ? `${MOVIES_URL + movie.image.url}` : movie.img}
           alt='movie'
         />
       </Link>

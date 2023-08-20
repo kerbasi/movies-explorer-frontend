@@ -1,26 +1,54 @@
 import "./SavedMovies.css";
+import { useCallback, useEffect, useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
-import Preloader from "../Preloader/Preloader";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import { useEffect, useState } from "react";
+import { filterMoviesByName, filterMoviesByTime } from "../../utils/utils";
 
-function SavedMovies() {
-  const [movies, setMovies] = useState([]);
+function SavedMovies({ handleSaveMovie, savedMovies, handleDeleteMovie }) {
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [limitedMovies, setIsLimitedMovies] = useState([]);
+  const [query, setQuery] = useState("");
+  const [isLimited, setIsLimited] = useState(false);
+
+  const handleSearch = (query) => {
+    setQuery(query);
+    handleFilter(query);
+    if (isLimited) handleLimit();
+  };
+
+  const handleFilter = (query) => {
+    setFilteredMovies(filterMoviesByName(savedMovies, query));
+  };
+
+  const handleLimitToggle = () => {
+    setIsLimited((prev) => !prev);
+  };
+
+  const handleLimit = useCallback(() => {
+    setIsLimitedMovies(filterMoviesByTime(filteredMovies));
+  }, [filteredMovies]);
+
   useEffect(() => {
-    import("../../utils/constants").then((data) => {
-      setMovies(data.movies);
-    });
-  }, []);
+    if (savedMovies.length) setFilteredMovies([...savedMovies]);
+  }, [savedMovies]);
   return (
     <main className='saved-movies'>
-      <SearchForm />
-      {movies.length === 0 ? (
-        <Preloader />
-      ) : (
-        <MoviesCardList
-          movies={movies.filter((movie) => movie.saved === true)}
-        />
-      )}
+      <SearchForm
+        handleSearch={handleSearch}
+        query={query}
+        handleLimitToggle={handleLimitToggle}
+        isLimited={isLimited}
+      />
+
+      <MoviesCardList
+        movies={isLimited ? limitedMovies : filteredMovies}
+        isError={false}
+        query={""}
+        handleSaveMovie={handleSaveMovie}
+        handleDeleteMovie={handleDeleteMovie}
+        savedMovies={savedMovies}
+        useMemory={false}
+      />
     </main>
   );
 }

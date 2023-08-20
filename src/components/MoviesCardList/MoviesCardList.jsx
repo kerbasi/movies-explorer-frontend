@@ -61,7 +61,7 @@ function MoviesCardList({
               return (
                 <MoviesCard
                   movie={movie}
-                  key={movie.id}
+                  key={movie.id ? movie.id : movie.movieId}
                   handleSaveMovie={handleSaveMovie}
                   handleDeleteMovie={handleDeleteMovie}
                   savedMovies={savedMovies}

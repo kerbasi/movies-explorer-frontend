@@ -136,7 +136,6 @@ function App() {
               <>
                 <Header logined={logined} />
                 <Movies
-                  showPreloader={false}
                   handleSaveMovie={handleSaveMovie}
                   handleDeleteMovie={handleDeleteMovie}
                   savedMovies={savedMovies}
@@ -150,7 +149,11 @@ function App() {
             element={
               <>
                 <Header logined={logined} />
-                <SavedMovies showPreloader={false} />
+                <SavedMovies
+                  handleSaveMovie={handleSaveMovie}
+                  handleDeleteMovie={handleDeleteMovie}
+                  savedMovies={savedMovies}
+                />
                 <Footer />
               </>
             }

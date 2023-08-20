@@ -4,13 +4,19 @@ import "./SearchForm.css";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import find from "../../images/find.svg";
 
-function SearchForm({ handleSearch, query, handleLimitToggle, isLimited }) {
+function SearchForm({
+  handleSearch,
+  query,
+  handleLimitToggle,
+  isLimited,
+  useMemory,
+}) {
   const [inputText, setInputText] = useState(query);
   const [errorText, setErrorText] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrorText(inputText ? "" : "Нужно ввести ключевое слово");
-    if (inputText) {
+    setErrorText(inputText || !useMemory ? "" : "Нужно ввести ключевое слово");
+    if (inputText || !useMemory) {
       handleSearch(inputText);
     }
   };
