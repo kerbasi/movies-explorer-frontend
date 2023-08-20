@@ -6,3 +6,4 @@ Frontend part of YP diploma project
 
 Фронтент расположен по адресу - https://bitfilms.nomoredomains.xyz/
 К api можно обращаться по адресу - api.bitfilms.nomoredomains.xyz
+Ссылка на пулл реквест - https://github.com/kerbasi/movies-explorer-frontend/pull/2
