@@ -52,7 +52,6 @@ function App() {
       .then((res) => {
         navigate("/movies", { replace: true });
         setLogined(true);
-        console.log(res.name);
         setCurrentUser({ name: res.name, email });
       })
       .catch((err) => {
@@ -171,7 +170,7 @@ function App() {
             element={
               <ProtectedRoute
                 element={Register}
-                handleLogin={handleLogin}
+                handleRegister={handleRegister}
                 errorMessage={errorMessage}
                 reversProtect={true}
               ></ProtectedRoute>
