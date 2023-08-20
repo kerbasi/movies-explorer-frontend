@@ -1,7 +1,7 @@
 import "./App.css";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { register, login } from "../../utils/MainApi";
+import { register, login, getUser, logout } from "../../utils/MainApi";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -33,12 +33,9 @@ function App() {
   const handleLogin = (email, password) => {
     login(email, password)
       .then((res) => {
-        if (res.token) {
-          localStorage.setItem("token", res.token);
-          navigate("/movies", { replace: true });
-          setLogined(true);
-        }
-        setErrorMessage("Что-то пошло не так! Попробуйте ещё раз.");
+        localStorage.setItem("token", res.token);
+        navigate("/movies", { replace: true });
+        setLogined(true);
       })
       .catch((err) => {
         setErrorMessage(err);
@@ -47,14 +44,23 @@ function App() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    setLogined(false);
+    logout().then((res) => {
+      setLogined(false);
+      navigate("/", { replace: true });
+    });
   };
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setLogined(true);
-    }
+    getUser()
+      .then((res) => {
+        if (res) {
+          setLogined(true);
+          console.log(res);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
