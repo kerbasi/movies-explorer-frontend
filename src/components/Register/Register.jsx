@@ -2,6 +2,8 @@ import "./Register.css";
 import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 import { useEffect, useState } from "react";
+import { register } from "../../utils/MainApi";
+import { REGEXP_NAME } from "../../utils/constants";
 
 function Register() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -9,7 +11,9 @@ function Register() {
     useFormAndValidation();
   const onSubmit = (e) => {
     e.preventDefault();
-    setErrorMessage("500 На сервере произошла ошибка");
+    register(values.name, values.email, values.password)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
   useEffect(() => {
     setValues({
@@ -40,8 +44,9 @@ function Register() {
             id='name'
             form='register'
             required
-            minLength='2'
-            maxLength='30'
+            pattern={REGEXP_NAME}
+            minLength={2}
+            maxLength={30}
             onChange={handleChange}
             value={values.name || ""}
           />
@@ -76,8 +81,8 @@ function Register() {
             id='password'
             form='register'
             required
-            minLength='8'
-            maxLength='30'
+            pattern='.{8,}'
+            title='Пароль должен быть не меньше 8 символов'
             onChange={handleChange}
             value={values.password || ""}
           />

@@ -1,6 +1,7 @@
 import "./UserForm.css";
 import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function UserForm({
   title,
@@ -41,34 +42,36 @@ function UserForm({
         onSubmit={onSubmit}
       >
         {props.children}
+        {(name !== "profile" || unlocked) && (
+          <div
+            className={`user-form__button-wrapper ${
+              name === "login" ? "user-form__button-wrapper_type_login" : ""
+            } ${
+              name === "profile" ? "user-form__button-wrapper_type_profile" : ""
+            }`}
+          >
+            <p
+              className={`user-form__error-message ${
+                name === "profile"
+                  ? "user-form__error-message_type_profile"
+                  : ""
+              }`}
+            >
+              {errorMessage}
+            </p>
+            <button
+              className={`user-form__button hover hover_type_button ${
+                !isValid ? "user-form__button_disabled" : ""
+              }`}
+              type='submit'
+              from={name}
+              disabled={isValid ? false : true}
+            >
+              {buttonText}
+            </button>
+          </div>
+        )}
       </form>
-      {(name !== "profile" || unlocked) && (
-        <div
-          className={`user-form__button-wrapper ${
-            name === "login" ? "user-form__button-wrapper_type_login" : ""
-          } ${
-            name === "profile" ? "user-form__button-wrapper_type_profile" : ""
-          }`}
-        >
-          <p
-            className={`user-form__error-message ${
-              name === "profile" ? "user-form__error-message_type_profile" : ""
-            }`}
-          >
-            {errorMessage}
-          </p>
-          <button
-            className={`user-form__button hover hover_type_button${
-              !isValid ? "user-form__button_disabled" : ""
-            }`}
-            type='submit'
-            from={name}
-            disabled={isValid ? false : true}
-          >
-            {buttonText}
-          </button>
-        </div>
-      )}
       {(name === "register" || name === "login") && (
         <p className='user-form__text'>
           {`${
