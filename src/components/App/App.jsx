@@ -30,8 +30,8 @@ function App() {
   const [logined, setLogined] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [savedMovies, setSavedMovies] = useState([]);
-  const headerlessRoutes = ["/signup", "/signin"];
-  const footerlessRoutes = ["/signup", "/signin", "/profile"];
+  const headerLessRoutes = ["/signup", "/signin"];
+  const footerLessRoutes = ["/signup", "/signin", "/profile"];
 
   const location = useLocation().pathname;
   const navigate = useNavigate();
@@ -52,7 +52,8 @@ function App() {
       .then((res) => {
         navigate("/movies", { replace: true });
         setLogined(true);
-        setCurrentUser();
+        console.log(res.name);
+        setCurrentUser({ name: res.name, email });
       })
       .catch((err) => {
         setErrorMessage(err);
@@ -64,6 +65,7 @@ function App() {
     logout().then((res) => {
       setLogined(false);
       navigate("/", { replace: true });
+      localStorage.clear();
     });
   };
 
@@ -105,7 +107,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (logined) {
+    if (!logined)
       getUser()
         .then((res) => {
           if (res) {
@@ -116,16 +118,21 @@ function App() {
         .catch((err) => {
           console.log(err);
         });
-      getMovies().then((res) => {
-        setSavedMovies(res);
-      });
+    if (logined) {
+      getMovies()
+        .then((res) => {
+          setSavedMovies(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, [logined]);
 
   return (
     <div className='app'>
       <CurrentUserContext.Provider value={currentUser}>
-        {!headerlessRoutes.includes(location) && <Header logined={logined} />}
+        {!headerLessRoutes.includes(location) && <Header logined={logined} />}
         <Routes>
           <Route
             path='/'
@@ -196,7 +203,7 @@ function App() {
           />
           <Route path='*' element={<NotFound />} />
         </Routes>
-        {!footerlessRoutes.includes(location) && <Footer />}
+        {!footerLessRoutes.includes(location) && <Footer />}
       </CurrentUserContext.Provider>
     </div>
   );
