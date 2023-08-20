@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
-function MoviesCardList({ movies, isError, query }) {
+function MoviesCardList({ movies, isError, query, handleSaveMovie }) {
   const isWidthExtraLarge = useMediaQuery("1280px");
   const isWidthLarge = useMediaQuery("955px");
   const isWidthMedium = useMediaQuery("768px");
@@ -51,7 +51,13 @@ function MoviesCardList({ movies, isError, query }) {
         <>
           <ul className='movies-card-list__wrapper'>
             {slicedMovies.map((movie) => {
-              return <MoviesCard movie={movie} key={movie.id} />;
+              return (
+                <MoviesCard
+                  movie={movie}
+                  key={movie.id}
+                  handleSaveMovie={handleSaveMovie}
+                />
+              );
             })}
           </ul>
           <div className='movies-card-list__more_button-wrapper'>

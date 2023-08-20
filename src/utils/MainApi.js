@@ -24,3 +24,34 @@ export function updateMe({ name, email }) {
     email,
   });
 }
+
+export function createMovie(movie) {
+  const { country,
+    director,
+    duration,
+    year,
+    description,
+    img,
+    trailerLink,
+    thumbnail,
+    movieId,
+    nameRU,
+    nameEN, } = movie
+  return makeRequest(API_URL, `movies`, "POST", true, {
+    country,
+    director,
+    duration,
+    year,
+    description,
+    img,
+    trailerLink,
+    thumbnail,
+    movieId,
+    nameRU,
+    nameEN,
+  })
+}
+
+export function getMovies() {
+  return makeRequest(API_URL, "movies", "GET", true);
+}

@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import * as movieApi from "../../utils/MovieApi";
 import { filterMoviesByName, filterMoviesByTime } from "../../utils/utils";
 
-function Movies() {
+function Movies({ handleSaveMovie }) {
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [limitedMovies, setIsLimitedMovies] = useState([]);
@@ -98,6 +98,7 @@ function Movies() {
           movies={isLimited ? limitedMovies : filteredMovies}
           isError={isError}
           query={query}
+          handleSaveMovie={handleSaveMovie}
         />
       )}
     </main>

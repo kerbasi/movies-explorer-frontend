@@ -6,7 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 import { MOVIES_URL } from "../../utils/constants";
 import { calculateDuration } from "../../utils/utils";
 
-function MoviesCard({ movie }) {
+function MoviesCard({ movie, handleSaveMovie }) {
   const location = useLocation().pathname;
   return (
     <li className='movies-card'>
@@ -27,6 +27,7 @@ function MoviesCard({ movie }) {
           className={`movies-card__button hover hover_type_button ${
             location === "/saved-movies" ? "movies-card__button_type_cross" : ""
           }`}
+          onClick={() => handleSaveMovie(movie)}
         >
           <img
             className='movies-card__button-image'

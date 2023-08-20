@@ -7,8 +7,11 @@ import {
   getUser,
   logout,
   updateMe,
+  createMovie,
+  getMovies,
 } from "../../utils/MainApi";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { MOVIES_URL } from "../../utils/constants";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -24,6 +27,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [logined, setLogined] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [savedMovies, setSavedMovies] = useState([]);
 
   const navigate = useNavigate();
 
@@ -69,7 +73,19 @@ function App() {
       .catch((err) => setErrorMessage(err));
   };
 
-  const saveMovie = (movie) => {};
+  const handleSaveMovie = (movie) => {
+    movie.img = MOVIES_URL + movie.image.url;
+    movie.movieId = movie.id;
+    console.log(movie);
+    createMovie(movie)
+      .then((res) => {
+        console.log(res);
+        if (res) {
+          setSavedMovies((prev) => [res, ...prev]);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     getUser()
@@ -82,6 +98,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
+    getMovies().then((res) => console.log(res));
   }, [logined]);
 
   return (
@@ -103,7 +120,11 @@ function App() {
             element={
               <>
                 <Header logined={logined} />
-                <Movies showPreloader={false} /> <Footer />
+                <Movies
+                  showPreloader={false}
+                  handleSaveMovie={handleSaveMovie}
+                />{" "}
+                <Footer />
               </>
             }
           />
