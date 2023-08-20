@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {
   register,
@@ -23,13 +23,17 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [logined, setLogined] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [savedMovies, setSavedMovies] = useState([]);
+  const headerlessRoutes = ["/signup", "/signin"];
+  const footerlessRoutes = ["/signup", "/signin", "/profile"];
 
+  const location = useLocation().pathname;
   const navigate = useNavigate();
 
   const handleRegister = (name, email, password) => {
@@ -101,94 +105,98 @@ function App() {
   };
 
   useEffect(() => {
-    getUser()
-      .then((res) => {
-        if (res) {
-          setLogined(true);
-          setCurrentUser(res);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
+    if (logined) {
+      getUser()
+        .then((res) => {
+          if (res) {
+            setLogined(true);
+            setCurrentUser(res);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      getMovies().then((res) => {
+        setSavedMovies(res);
       });
-    getMovies().then((res) => {
-      setSavedMovies(res);
-    });
+    }
   }, [logined]);
 
   return (
     <div className='app'>
       <CurrentUserContext.Provider value={currentUser}>
+        {!headerlessRoutes.includes(location) && <Header logined={logined} />}
         <Routes>
           <Route
             path='/'
             element={
               <>
-                <Header logined={logined} setLogined={setLogined} />
                 <Main />
-                <Footer />
               </>
             }
           />
           <Route
             path='/movies'
             element={
-              <>
-                <Header logined={logined} />
-                <Movies
-                  handleSaveMovie={handleSaveMovie}
-                  handleDeleteMovie={handleDeleteMovie}
-                  savedMovies={savedMovies}
-                />{" "}
-                <Footer />
-              </>
+              <ProtectedRoute
+                logined={logined}
+                element={Movies}
+                handleSaveMovie={handleSaveMovie}
+                handleDeleteMovie={handleDeleteMovie}
+                savedMovies={savedMovies}
+              ></ProtectedRoute>
             }
           />
           <Route
             path='/saved-movies'
             element={
-              <>
-                <Header logined={logined} />
-                <SavedMovies
-                  handleSaveMovie={handleSaveMovie}
-                  handleDeleteMovie={handleDeleteMovie}
-                  savedMovies={savedMovies}
-                />
-                <Footer />
-              </>
+              <ProtectedRoute
+                logined={logined}
+                element={SavedMovies}
+                handleSaveMovie={handleSaveMovie}
+                handleDeleteMovie={handleDeleteMovie}
+                savedMovies={savedMovies}
+              ></ProtectedRoute>
             }
           />
           <Route
             path='/signup'
             element={
-              <Register
-                handleRegister={handleRegister}
+              <ProtectedRoute
+                element={Register}
+                handleLogin={handleLogin}
                 errorMessage={errorMessage}
-              />
+                reversProtect={true}
+              ></ProtectedRoute>
             }
           />
           <Route
             path='/signin'
             element={
-              <Login handleLogin={handleLogin} errorMessage={errorMessage} />
+              <ProtectedRoute
+                element={Login}
+                handleLogin={handleLogin}
+                errorMessage={errorMessage}
+                reversProtect={true}
+              ></ProtectedRoute>
             }
           />
           <Route
             path='/profile'
             element={
-              <>
-                <Header logined={logined} />
-                <Profile
-                  user={currentUser ? currentUser.name : ""}
-                  handleLogout={handleLogout}
-                  handleUserUpdate={handleUserUpdate}
-                  errorMessage={errorMessage}
-                />
-              </>
+              <ProtectedRoute
+                logined={logined}
+                element={Profile}
+                user={currentUser ? currentUser.name : ""}
+                handleLogout={handleLogout}
+                handleUserUpdate={handleUserUpdate}
+                errorMessage={errorMessage}
+              ></ProtectedRoute>
             }
           />
           <Route path='*' element={<NotFound />} />
         </Routes>
+        {!footerlessRoutes.includes(location) && <Footer />}
       </CurrentUserContext.Provider>
     </div>
   );
