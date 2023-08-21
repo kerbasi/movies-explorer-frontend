@@ -1,5 +1,4 @@
 import { useState, useCallback } from "react";
-import isEmail from "validator/lib/isEmail";
 
 function useFormAndValidation() {
   const [values, setValues] = useState({});
@@ -12,7 +11,7 @@ function useFormAndValidation() {
       e.target.setCustomValidity('Имя должно быть от 2 до 30 символов и состоять из кирилицы или латиницы, дефиса и пробела')
     } else if (name === 'password' && e.target.validity.patternMismatch) {
       e.target.setCustomValidity('Пароль должен быть не меньше 8 символов')
-    } else if (name === 'email' && !isEmail(value)) {
+    } else if (name === 'email' && e.target.validity.patternMismatch) {
       e.target.setCustomValidity('Нужно ввести дествительный адресс email')
     } else {
       e.target.setCustomValidity('')

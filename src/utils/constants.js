@@ -6,6 +6,7 @@ export const API_URL = "http://localhost:3000/"
 export const MOVIES_TIME_LIMIT = 40
 
 export const REGEXP_NAME = "^[A-Za-zА-Яа-яЁё \\-]+$"
+export const REGEXP_EMAIL = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
 
 export const MOVIES_NUM_EXTRA_LARGE = 16
 export const MOVIES_ADD_EXTRA_LARGE = 4

@@ -2,7 +2,7 @@ import "./Register.css";
 import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 import { useEffect } from "react";
-import { REGEXP_NAME } from "../../utils/constants";
+import { REGEXP_EMAIL, REGEXP_NAME } from "../../utils/constants";
 
 function Register({
   handleRegister,
@@ -69,6 +69,7 @@ function Register({
             id='email'
             form='register'
             required
+            pattern={REGEXP_EMAIL}
             onChange={handleChange}
             value={values.email || ""}
           />

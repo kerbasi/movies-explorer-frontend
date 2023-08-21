@@ -4,7 +4,7 @@ import useFormAndValidation from "../../hooks/useFormAndValidation";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { REGEXP_NAME } from "../../utils/constants";
+import { REGEXP_EMAIL, REGEXP_NAME } from "../../utils/constants";
 
 function Profile({
   user,
@@ -107,6 +107,7 @@ function Profile({
             id='email'
             form='profile'
             required
+            pattern={REGEXP_EMAIL}
             onChange={handleChange}
             value={values.email || ""}
             disabled={!unlocked}
