@@ -1,7 +1,7 @@
 export const MOVIES_URL = "https://api.nomoreparties.co/"
 
-export const API_URL = "http://localhost:3000/"
-// export const API_URL = "https://api.bitfilms.nomoredomains.xyz/"
+// export const API_URL = "http://localhost:3000/"
+export const API_URL = "https://api.bitfilms.nomoredomains.xyz/"
 
 export const MOVIES_TIME_LIMIT = 40
 
