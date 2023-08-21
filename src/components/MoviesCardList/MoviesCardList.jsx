@@ -38,7 +38,7 @@ function MoviesCardList({
       setPagesLimit(5);
       setAddPages(2);
     }
-  }, [isWidthLarge, isWidthMedium, isWidthExtraLarge]);
+  }, [isWidthLarge, isWidthMedium, isWidthExtraLarge, query]);
 
   useEffect(() => {
     setSlicedMovies(movies.slice(0, pagesLimit));

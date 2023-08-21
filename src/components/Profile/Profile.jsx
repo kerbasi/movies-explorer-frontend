@@ -24,7 +24,6 @@ function Profile({ user, handleLogout, handleUserUpdate, errorMessage }) {
     setUnlocked(true);
     setSuccess(false);
     setOldValues(values);
-    console.log(values);
   };
   const onLogout = () => {
     navigate("/");
