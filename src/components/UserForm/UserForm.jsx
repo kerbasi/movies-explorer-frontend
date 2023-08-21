@@ -14,6 +14,7 @@ function UserForm({
   onLogout,
   success,
   successMessage,
+  isFormBlocked,
   ...props
 }) {
   return (
@@ -34,58 +35,62 @@ function UserForm({
       >
         {title}
       </h1>
-      <form
-        className={`user-form__form user-form__form_type_${name}`}
-        action='#'
-        name={name}
-        id={name}
-        noValidate
-        onSubmit={onSubmit}
-      >
-        {props.children}
-        {success && (
-          <p
-            className={`user-form__success-message ${
-              name === "profile"
-                ? "user-form__success-message_type_profile"
-                : ""
-            }`}
-          >
-            {successMessage}
-          </p>
-        )}
-
-        {(name !== "profile" || unlocked) && (
-          <div
-            className={`user-form__button-wrapper ${
-              name === "login" ? "user-form__button-wrapper_type_login" : ""
-            } ${
-              name === "profile" ? "user-form__button-wrapper_type_profile" : ""
-            }`}
-          >
+      <fieldset className='user-form__form-wrapper' disabled={isFormBlocked}>
+        <form
+          className={`user-form__form user-form__form_type_${name}`}
+          action='#'
+          name={name}
+          id={name}
+          noValidate
+          onSubmit={onSubmit}
+        >
+          {props.children}
+          {success && (
             <p
-              className={`user-form__error-message ${
+              className={`user-form__success-message ${
                 name === "profile"
-                  ? "user-form__error-message_type_profile"
+                  ? "user-form__success-message_type_profile"
                   : ""
               }`}
             >
-              {errorMessage}
+              {successMessage}
             </p>
+          )}
 
-            <button
-              className={`user-form__button hover hover_type_button ${
-                !isValid ? "user-form__button_disabled" : ""
+          {(name !== "profile" || unlocked) && (
+            <div
+              className={`user-form__button-wrapper ${
+                name === "login" ? "user-form__button-wrapper_type_login" : ""
+              } ${
+                name === "profile"
+                  ? "user-form__button-wrapper_type_profile"
+                  : ""
               }`}
-              type='submit'
-              from={name}
-              disabled={isValid ? false : true}
             >
-              {buttonText}
-            </button>
-          </div>
-        )}
-      </form>
+              <p
+                className={`user-form__error-message ${
+                  name === "profile"
+                    ? "user-form__error-message_type_profile"
+                    : ""
+                }`}
+              >
+                {errorMessage}
+              </p>
+
+              <button
+                className={`user-form__button hover hover_type_button ${
+                  !isValid || isFormBlocked ? "user-form__button_disabled" : ""
+                }`}
+                type='submit'
+                from={name}
+                disabled={isValid ? false : true}
+              >
+                {buttonText}
+              </button>
+            </div>
+          )}
+        </form>
+      </fieldset>
       {(name === "register" || name === "login") && (
         <p className='user-form__text'>
           {`${

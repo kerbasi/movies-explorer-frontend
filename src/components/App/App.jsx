@@ -34,11 +34,13 @@ function App() {
   const headerLessRoutes = ["/signup", "/signin"];
   const footerLessRoutes = ["/signup", "/signin", "/profile"];
   const [isUserChecked, setIsUserChecked] = useState(false);
+  const [isFormBlocked, setIsFormBlocked] = useState(false);
 
   const location = useLocation().pathname;
   const navigate = useNavigate();
 
   const handleRegister = (name, email, password) => {
+    setIsFormBlocked(true);
     register(name, email, password)
       .then((res) => {
         handleLogin(email, password);
@@ -46,10 +48,12 @@ function App() {
       .catch((err) => {
         setErrorMessage(err);
         console.log(err);
-      });
+      })
+      .finally(() => setIsFormBlocked(false));
   };
 
   const handleLogin = (email, password) => {
+    setIsFormBlocked(true);
     login(email, password)
       .then((res) => {
         navigate("/movies", { replace: true });
@@ -59,7 +63,8 @@ function App() {
       .catch((err) => {
         setErrorMessage(err);
         console.log(err);
-      });
+      })
+      .finally(() => setIsFormBlocked(false));
   };
 
   const handleLogout = () => {
@@ -71,6 +76,7 @@ function App() {
   };
 
   const handleUserUpdate = (data, setUnlocked) => {
+    setIsFormBlocked(true);
     updateMe(data)
       .then((res) => {
         if (res) {
@@ -78,7 +84,8 @@ function App() {
           setUnlocked(false);
         }
       })
-      .catch((err) => setErrorMessage(err));
+      .catch((err) => setErrorMessage(err))
+      .finally(() => setIsFormBlocked(false));
   };
 
   const handleSaveMovie = (movie) => {
@@ -179,7 +186,9 @@ function App() {
                   element={Register}
                   handleRegister={handleRegister}
                   errorMessage={errorMessage}
+                  setErrorMessage={setErrorMessage}
                   reversProtect={true}
+                  isFormBlocked={isFormBlocked}
                 ></ProtectedRoute>
               }
             />
@@ -191,7 +200,9 @@ function App() {
                   element={Login}
                   handleLogin={handleLogin}
                   errorMessage={errorMessage}
+                  setErrorMessage={setErrorMessage}
                   reversProtect={true}
+                  isFormBlocked={isFormBlocked}
                 ></ProtectedRoute>
               }
             />
@@ -205,6 +216,8 @@ function App() {
                   handleLogout={handleLogout}
                   handleUserUpdate={handleUserUpdate}
                   errorMessage={errorMessage}
+                  setErrorMessage={setErrorMessage}
+                  isFormBlocked={isFormBlocked}
                 ></ProtectedRoute>
               }
             />

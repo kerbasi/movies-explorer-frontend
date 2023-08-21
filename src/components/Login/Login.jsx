@@ -3,7 +3,7 @@ import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 import { useEffect } from "react";
 
-function Login({ handleLogin, errorMessage }) {
+function Login({ handleLogin, errorMessage, setErrorMessage, isFormBlocked }) {
   const { values, handleChange, errors, isValid, setValues } =
     useFormAndValidation();
   const onSubmit = (e) => {
@@ -16,6 +16,9 @@ function Login({ handleLogin, errorMessage }) {
       password: "",
     });
   }, [setValues]);
+  useEffect(() => {
+    setErrorMessage("");
+  }, [setErrorMessage]);
   return (
     <main className='login'>
       <UserForm
@@ -25,6 +28,7 @@ function Login({ handleLogin, errorMessage }) {
         buttonText='Войти'
         isValid={isValid}
         errorMessage={errorMessage}
+        isFormBlocked={isFormBlocked}
       >
         <label className='user-form__label' htmlFor='email'>
           E-mail

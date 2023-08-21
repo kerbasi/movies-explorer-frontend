@@ -4,7 +4,12 @@ import useFormAndValidation from "../../hooks/useFormAndValidation";
 import { useEffect } from "react";
 import { REGEXP_NAME } from "../../utils/constants";
 
-function Register({ handleRegister, errorMessage }) {
+function Register({
+  handleRegister,
+  errorMessage,
+  setErrorMessage,
+  isFormBlocked,
+}) {
   const { values, handleChange, errors, isValid, setValues } =
     useFormAndValidation();
   const onSubmit = (e) => {
@@ -18,6 +23,9 @@ function Register({ handleRegister, errorMessage }) {
       password: "",
     });
   }, [setValues]);
+  useEffect(() => {
+    setErrorMessage("");
+  }, [setErrorMessage]);
   return (
     <main className='register'>
       <UserForm
@@ -27,6 +35,7 @@ function Register({ handleRegister, errorMessage }) {
         buttonText='Зарегистрироваться'
         isValid={isValid}
         errorMessage={errorMessage}
+        isFormBlocked={isFormBlocked}
       >
         <label className='user-form__label' htmlFor='name'>
           Имя

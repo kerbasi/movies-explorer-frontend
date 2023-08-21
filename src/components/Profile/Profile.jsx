@@ -6,7 +6,14 @@ import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { REGEXP_NAME } from "../../utils/constants";
 
-function Profile({ user, handleLogout, handleUserUpdate, errorMessage }) {
+function Profile({
+  user,
+  handleLogout,
+  handleUserUpdate,
+  errorMessage,
+  setErrorMessage,
+  isFormBlocked,
+}) {
   const [success, setSuccess] = useState(false);
   const [successMessage] = useState("Профиль успешно изменен");
   const [unlocked, setUnlocked] = useState(false);
@@ -42,7 +49,9 @@ function Profile({ user, handleLogout, handleUserUpdate, errorMessage }) {
       setIsValid(false);
     }
   }, [values, oldValues, setIsValid]);
-
+  useEffect(() => {
+    setErrorMessage("");
+  }, [setErrorMessage]);
   return (
     <main className='profile'>
       <UserForm
@@ -57,6 +66,7 @@ function Profile({ user, handleLogout, handleUserUpdate, errorMessage }) {
         onLogout={onLogout}
         success={success}
         successMessage={successMessage}
+        isFormBlocked={isFormBlocked}
       >
         <label
           className='user-form__label user-form__label_type_profile'
