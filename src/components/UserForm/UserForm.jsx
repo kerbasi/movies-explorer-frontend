@@ -12,6 +12,8 @@ function UserForm({
   unlocked,
   errorMessage,
   onLogout,
+  success,
+  successMessage,
   ...props
 }) {
   return (
@@ -41,6 +43,18 @@ function UserForm({
         onSubmit={onSubmit}
       >
         {props.children}
+        {success && (
+          <p
+            className={`user-form__success-message ${
+              name === "profile"
+                ? "user-form__success-message_type_profile"
+                : ""
+            }`}
+          >
+            {successMessage}
+          </p>
+        )}
+
         {(name !== "profile" || unlocked) && (
           <div
             className={`user-form__button-wrapper ${
@@ -58,6 +72,7 @@ function UserForm({
             >
               {errorMessage}
             </p>
+
             <button
               className={`user-form__button hover hover_type_button ${
                 !isValid ? "user-form__button_disabled" : ""

@@ -7,17 +7,24 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { REGEXP_NAME } from "../../utils/constants";
 
 function Profile({ user, handleLogout, handleUserUpdate, errorMessage }) {
+  const [success, setSuccess] = useState(false);
+  const [successMessage] = useState("Профиль успешно изменен");
   const [unlocked, setUnlocked] = useState(false);
-  const { values, handleChange, errors, isValid, setValues } =
+  const { values, handleChange, errors, isValid, setValues, setIsValid } =
     useFormAndValidation();
+  const [oldValues, setOldValues] = useState([]);
   const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
     handleUserUpdate({ name: values.name, email: values.email }, setUnlocked);
+    setSuccess(true);
   };
   const onUnlock = () => {
     setUnlocked(true);
+    setSuccess(false);
+    setOldValues(values);
+    console.log(values);
   };
   const onLogout = () => {
     navigate("/");
@@ -30,6 +37,13 @@ function Profile({ user, handleLogout, handleUserUpdate, errorMessage }) {
       email: email,
     });
   }, [setValues, currentUser]);
+
+  useEffect(() => {
+    if (values.name === oldValues.name && values.email === oldValues.email) {
+      setIsValid(false);
+    }
+  }, [values, oldValues, setIsValid]);
+
   return (
     <main className='profile'>
       <UserForm
@@ -42,6 +56,8 @@ function Profile({ user, handleLogout, handleUserUpdate, errorMessage }) {
         unlocked={unlocked}
         errorMessage={errorMessage}
         onLogout={onLogout}
+        success={success}
+        successMessage={successMessage}
       >
         <label
           className='user-form__label user-form__label_type_profile'

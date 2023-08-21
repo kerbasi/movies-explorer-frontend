@@ -55,6 +55,11 @@
   }
 }
 
+.user-form__success-message {
+  color: var(--color-green);
+  text-align: center;
+}
+
 .user-form_type_profile {
   max-width: 410px;
   padding: 37px 0 68px;
