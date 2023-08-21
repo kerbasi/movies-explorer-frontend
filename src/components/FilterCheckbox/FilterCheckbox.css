@@ -23,9 +23,9 @@
   display: block;
   width: 32px;
   height: 16px;
-  border: 2px solid var(--color-green);
+  border: 2px solid var(--color-grey-light-9);
   border-radius: 12px;
-  background-color: var(--color-green);
+  background-color: var(--color-grey-light-9);
   transition: 0.5s;
 }
 
@@ -37,11 +37,17 @@
   box-sizing: border-box;
   top: 2px;
   left: 2px;
-  background-color: var(--color-white);
+  background-color: var(--color-grey-light-1);
   border-radius: 50%;
   transition: 0.5s;
 }
 
+.filter-checkbox__checkbox:checked ~ .filter-checkbox__span {
+  border: 2px solid var(--color-green);
+  background-color: var(--color-green);
+}
+
 .filter-checkbox__checkbox:checked ~ .filter-checkbox__span:before {
   transform: translateX(16px);
+  background-color: var(--color-white);
 }

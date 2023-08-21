@@ -155,6 +155,7 @@
 .user-form__button_disabled {
   background-color: var(--color-grey-light-8);
   color: var(--color-grey-dark-1);
+  cursor: default;
 }
 
 .user-form__label {
