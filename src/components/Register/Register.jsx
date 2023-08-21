@@ -1,15 +1,20 @@
 import "./Register.css";
 import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { REGEXP_EMAIL, REGEXP_NAME } from "../../utils/constants";
 
-function Register() {
-  const [errorMessage, setErrorMessage] = useState("");
+function Register({
+  handleRegister,
+  errorMessage,
+  setErrorMessage,
+  isFormBlocked,
+}) {
   const { values, handleChange, errors, isValid, setValues } =
     useFormAndValidation();
   const onSubmit = (e) => {
     e.preventDefault();
-    setErrorMessage("500 На сервере произошла ошибка");
+    handleRegister(values.name, values.email, values.password);
   };
   useEffect(() => {
     setValues({
@@ -18,6 +23,9 @@ function Register() {
       password: "",
     });
   }, [setValues]);
+  useEffect(() => {
+    setErrorMessage("");
+  }, [setErrorMessage]);
   return (
     <main className='register'>
       <UserForm
@@ -27,6 +35,7 @@ function Register() {
         buttonText='Зарегистрироваться'
         isValid={isValid}
         errorMessage={errorMessage}
+        isFormBlocked={isFormBlocked}
       >
         <label className='user-form__label' htmlFor='name'>
           Имя
@@ -40,8 +49,9 @@ function Register() {
             id='name'
             form='register'
             required
-            minLength='2'
-            maxLength='30'
+            pattern={REGEXP_NAME}
+            minLength={2}
+            maxLength={30}
             onChange={handleChange}
             value={values.name || ""}
           />
@@ -59,6 +69,7 @@ function Register() {
             id='email'
             form='register'
             required
+            pattern={REGEXP_EMAIL}
             onChange={handleChange}
             value={values.email || ""}
           />
@@ -76,8 +87,8 @@ function Register() {
             id='password'
             form='register'
             required
-            minLength='8'
-            maxLength='30'
+            pattern='.{8,}'
+            title='Пароль должен быть не меньше 8 символов'
             onChange={handleChange}
             value={values.password || ""}
           />

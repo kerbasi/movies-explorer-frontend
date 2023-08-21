@@ -1,18 +1,14 @@
 import "./Login.css";
 import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-function Login({ setLogined }) {
-  const navigate = useNavigate();
-  const [errorMessage] = useState("");
+function Login({ handleLogin, errorMessage, setErrorMessage, isFormBlocked }) {
   const { values, handleChange, errors, isValid, setValues } =
     useFormAndValidation();
   const onSubmit = (e) => {
     e.preventDefault();
-    navigate("/");
-    setLogined(true);
+    handleLogin(values.email, values.password);
   };
   useEffect(() => {
     setValues({
@@ -20,6 +16,9 @@ function Login({ setLogined }) {
       password: "",
     });
   }, [setValues]);
+  useEffect(() => {
+    setErrorMessage("");
+  }, [setErrorMessage]);
   return (
     <main className='login'>
       <UserForm
@@ -29,6 +28,7 @@ function Login({ setLogined }) {
         buttonText='Войти'
         isValid={isValid}
         errorMessage={errorMessage}
+        isFormBlocked={isFormBlocked}
       >
         <label className='user-form__label' htmlFor='email'>
           E-mail
@@ -59,8 +59,7 @@ function Login({ setLogined }) {
             id='password'
             form='login'
             required
-            minLength='8'
-            maxLength='30'
+            pattern='.{8,}'
             onChange={handleChange}
             value={values.password || ""}
           />

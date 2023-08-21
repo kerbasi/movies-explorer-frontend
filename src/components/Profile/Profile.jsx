@@ -1,32 +1,57 @@
 import "./Profile.css";
 import UserForm from "../UserForm/UserForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { REGEXP_EMAIL, REGEXP_NAME } from "../../utils/constants";
 
-function Profile({ user, setLogined }) {
+function Profile({
+  user,
+  handleLogout,
+  handleUserUpdate,
+  errorMessage,
+  setErrorMessage,
+  isFormBlocked,
+}) {
+  const [success, setSuccess] = useState(false);
+  const [successMessage] = useState("Профиль успешно изменен");
   const [unlocked, setUnlocked] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const { values, handleChange, errors, isValid, setValues } =
+  const { values, handleChange, errors, isValid, setValues, setIsValid } =
     useFormAndValidation();
+  const [oldValues, setOldValues] = useState([]);
+  const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
-    setErrorMessage("500 На сервере произошла ошибка");
+    handleUserUpdate({ name: values.name, email: values.email }, setUnlocked);
+    setSuccess(true);
   };
   const onUnlock = () => {
     setUnlocked(true);
+    setSuccess(false);
+    setOldValues(values);
   };
   const onLogout = () => {
     navigate("/");
-    setLogined(false);
+    handleLogout();
   };
   useEffect(() => {
+    const { name, email } = currentUser;
     setValues({
-      name: "Виталий",
-      email: "pochta@yandex.ru",
+      name: name,
+      email: email,
     });
-  }, [setValues]);
+  }, [setValues, currentUser]);
+
+  useEffect(() => {
+    if (values.name === oldValues.name && values.email === oldValues.email) {
+      setIsValid(false);
+    }
+  }, [values, oldValues, setIsValid]);
+  useEffect(() => {
+    setErrorMessage("");
+  }, [setErrorMessage]);
   return (
     <main className='profile'>
       <UserForm
@@ -39,6 +64,9 @@ function Profile({ user, setLogined }) {
         unlocked={unlocked}
         errorMessage={errorMessage}
         onLogout={onLogout}
+        success={success}
+        successMessage={successMessage}
+        isFormBlocked={isFormBlocked}
       >
         <label
           className='user-form__label user-form__label_type_profile'
@@ -54,8 +82,9 @@ function Profile({ user, setLogined }) {
             id='name'
             form='profile'
             required
-            minLength='2'
-            maxLength='30'
+            pattern={REGEXP_NAME}
+            minLength={2}
+            maxLength={30}
             onChange={handleChange}
             value={values.name || ""}
             disabled={!unlocked}
@@ -78,6 +107,7 @@ function Profile({ user, setLogined }) {
             id='email'
             form='profile'
             required
+            pattern={REGEXP_EMAIL}
             onChange={handleChange}
             value={values.email || ""}
             disabled={!unlocked}

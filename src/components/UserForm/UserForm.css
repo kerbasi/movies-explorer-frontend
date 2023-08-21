@@ -55,6 +55,16 @@
   }
 }
 
+.user-form__success-message {
+  color: var(--color-green);
+  text-align: center;
+}
+
+.user-form__form-wrapper {
+  border: none;
+  padding: 0;
+}
+
 .user-form_type_profile {
   max-width: 410px;
   padding: 37px 0 68px;
@@ -150,6 +160,7 @@
 .user-form__button_disabled {
   background-color: var(--color-grey-light-8);
   color: var(--color-grey-dark-1);
+  cursor: default;
 }
 
 .user-form__label {
@@ -250,11 +261,6 @@
   font-size: 13px;
   font-weight: 400;
   line-height: normal;
-}
-
-@media screen and (max-width: 550px) {
-  .user-form__input {
-  }
 }
 
 .user-form__input_type_profile {

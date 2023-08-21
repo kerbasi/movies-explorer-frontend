@@ -6,12 +6,21 @@ export const useMediaQuery = (size) => {
   useEffect(() => {
     const query = `(min-width: ${size})`;
     const media = window.matchMedia(query);
+    let inProcess = true
+    const throttle = () => {
+      if (inProcess) {
+        clearTimeout(inProcess)
+      }
+      inProcess = setTimeout(listener, 100)
+    }
     if (media.matches !== matches) {
       setMatches(media.matches);
     }
-    const listener = () => setMatches(media.matches);
-    window.addEventListener('resize', listener);
-    return () => window.removeEventListener('resize', listener);
+    const listener = () => {
+      setMatches(media.matches)
+    };
+    window.addEventListener('resize', throttle);
+    return () => window.removeEventListener('resize', throttle);
   }, [matches, size]);
 
   return matches;
