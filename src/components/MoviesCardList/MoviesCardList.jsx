@@ -3,6 +3,16 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import {
+  MOVIES_NUM_EXTRA_LARGE,
+  MOVIES_ADD_EXTRA_LARGE,
+  MOVIES_NUM_LARGE,
+  MOVIES_ADD_LARGE,
+  MOVIES_NUM_MEDIUM,
+  MOVIES_ADD_MEDIUM,
+  MOVIES_NUM_SMALL,
+  MOVIES_ADD_SMALL,
+} from "../../utils/constants";
 
 function MoviesCardList({
   movies,
@@ -26,17 +36,17 @@ function MoviesCardList({
 
   useEffect(() => {
     if (isWidthExtraLarge) {
-      setPagesLimit(16);
-      setAddPages(4);
+      setPagesLimit(MOVIES_NUM_EXTRA_LARGE);
+      setAddPages(MOVIES_ADD_EXTRA_LARGE);
     } else if (isWidthLarge) {
-      setPagesLimit(12);
-      setAddPages(3);
+      setPagesLimit(MOVIES_NUM_LARGE);
+      setAddPages(MOVIES_ADD_LARGE);
     } else if (isWidthMedium) {
-      setPagesLimit(8);
-      setAddPages(2);
+      setPagesLimit(MOVIES_NUM_MEDIUM);
+      setAddPages(MOVIES_ADD_MEDIUM);
     } else {
-      setPagesLimit(5);
-      setAddPages(2);
+      setPagesLimit(MOVIES_NUM_SMALL);
+      setAddPages(MOVIES_ADD_SMALL);
     }
   }, [isWidthLarge, isWidthMedium, isWidthExtraLarge, query]);
 
