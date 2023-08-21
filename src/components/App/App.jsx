@@ -24,6 +24,7 @@ import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Preloader from "../Preloader/Preloader";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -32,6 +33,7 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const headerLessRoutes = ["/signup", "/signin"];
   const footerLessRoutes = ["/signup", "/signin", "/profile"];
+  const [isUserChecked, setIsUserChecked] = useState(false);
 
   const location = useLocation().pathname;
   const navigate = useNavigate();
@@ -116,7 +118,8 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
-        });
+        })
+        .finally(() => setIsUserChecked(true));
     if (logined) {
       getMovies()
         .then((res) => {
@@ -130,80 +133,86 @@ function App() {
 
   return (
     <div className='app'>
-      <CurrentUserContext.Provider value={currentUser}>
-        {!headerLessRoutes.includes(location) && <Header logined={logined} />}
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <>
-                <Main />
-              </>
-            }
-          />
-          <Route
-            path='/movies'
-            element={
-              <ProtectedRoute
-                logined={logined}
-                element={Movies}
-                handleSaveMovie={handleSaveMovie}
-                handleDeleteMovie={handleDeleteMovie}
-                savedMovies={savedMovies}
-              ></ProtectedRoute>
-            }
-          />
-          <Route
-            path='/saved-movies'
-            element={
-              <ProtectedRoute
-                logined={logined}
-                element={SavedMovies}
-                handleSaveMovie={handleSaveMovie}
-                handleDeleteMovie={handleDeleteMovie}
-                savedMovies={savedMovies}
-              ></ProtectedRoute>
-            }
-          />
-          <Route
-            path='/signup'
-            element={
-              <ProtectedRoute
-                element={Register}
-                handleRegister={handleRegister}
-                errorMessage={errorMessage}
-                reversProtect={true}
-              ></ProtectedRoute>
-            }
-          />
-          <Route
-            path='/signin'
-            element={
-              <ProtectedRoute
-                element={Login}
-                handleLogin={handleLogin}
-                errorMessage={errorMessage}
-                reversProtect={true}
-              ></ProtectedRoute>
-            }
-          />
-          <Route
-            path='/profile'
-            element={
-              <ProtectedRoute
-                logined={logined}
-                element={Profile}
-                user={currentUser ? currentUser.name : ""}
-                handleLogout={handleLogout}
-                handleUserUpdate={handleUserUpdate}
-                errorMessage={errorMessage}
-              ></ProtectedRoute>
-            }
-          />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
-        {!footerLessRoutes.includes(location) && <Footer />}
-      </CurrentUserContext.Provider>
+      {!isUserChecked ? (
+        <Preloader />
+      ) : (
+        <CurrentUserContext.Provider value={currentUser}>
+          {!headerLessRoutes.includes(location) && <Header logined={logined} />}
+          <Routes>
+            <Route
+              path='/'
+              element={
+                <>
+                  <Main />
+                </>
+              }
+            />
+            <Route
+              path='/movies'
+              element={
+                <ProtectedRoute
+                  logined={logined}
+                  element={Movies}
+                  handleSaveMovie={handleSaveMovie}
+                  handleDeleteMovie={handleDeleteMovie}
+                  savedMovies={savedMovies}
+                ></ProtectedRoute>
+              }
+            />
+            <Route
+              path='/saved-movies'
+              element={
+                <ProtectedRoute
+                  logined={logined}
+                  element={SavedMovies}
+                  handleSaveMovie={handleSaveMovie}
+                  handleDeleteMovie={handleDeleteMovie}
+                  savedMovies={savedMovies}
+                ></ProtectedRoute>
+              }
+            />
+            <Route
+              path='/signup'
+              element={
+                <ProtectedRoute
+                  logined={logined}
+                  element={Register}
+                  handleRegister={handleRegister}
+                  errorMessage={errorMessage}
+                  reversProtect={true}
+                ></ProtectedRoute>
+              }
+            />
+            <Route
+              path='/signin'
+              element={
+                <ProtectedRoute
+                  logined={logined}
+                  element={Login}
+                  handleLogin={handleLogin}
+                  errorMessage={errorMessage}
+                  reversProtect={true}
+                ></ProtectedRoute>
+              }
+            />
+            <Route
+              path='/profile'
+              element={
+                <ProtectedRoute
+                  logined={logined}
+                  element={Profile}
+                  user={currentUser ? currentUser.name : ""}
+                  handleLogout={handleLogout}
+                  handleUserUpdate={handleUserUpdate}
+                  errorMessage={errorMessage}
+                ></ProtectedRoute>
+              }
+            />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+          {!footerLessRoutes.includes(location) && <Footer />}
+        </CurrentUserContext.Provider>
+      )}
     </div>
   );
 }
